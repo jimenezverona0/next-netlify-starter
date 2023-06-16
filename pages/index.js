@@ -3,7 +3,7 @@ import Header from '@components/Header'
 import Footer from '@components/Footer'
 
 export const getStaticProps = async () => {
-  const response = await fetch("https://api.soyveci.com/transactions/smartlink/v2", {
+  const response1 = await fetch("https://api.soyveci.com/transactions/smartlink/v2", {
     "credentials": "omit",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0",
@@ -19,12 +19,12 @@ export const getStaticProps = async () => {
     "method": "POST",
     "mode": "cors"
 });
-  const data = await response.json();
+  const data1 = await response1.json();
   const transDate = data['data']['date']
   const transID = data['data']['code']
   const signature = data['data']['signature_pse']
   
-  const response = await fetch("https://secure.payzen.lat/vads-payment/", {
+  const response2 = await fetch("https://secure.payzen.lat/vads-payment/", {
     "credentials": "include",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0",
@@ -44,10 +44,10 @@ export const getStaticProps = async () => {
     "method": "POST",
     "mode": "cors"
 });
-  const data = await response.text();
-  console.log(data);
+  const data2 = await response2.text();
+  console.log(data2);
   return {
-    props: {pageData: data}
+    props: {pageData: data2}
   }
 }
 
