@@ -104,7 +104,7 @@ export const getStaticProps = async () => {
       data2.substring(
         data2.indexOf(bank.toUpperCase()) - ('<option value="XXXX">XXXXXXXX XXXXXXXXXXX XXXXXXXXXX</option>'.length),
         data2.indexOf(bank.toUpperCase())
-      ).indexOf('"', r.text.substring(
+      ).indexOf('"', data2.substring(
         data2.indexOf(bank.toUpperCase()) - ('<option value="XXXX">XXXXXXXX XXXXXXXXXXX XXXXXXXXXX</option>'.length),
         data2.indexOf(bank.toUpperCase())
       ).indexOf('<option value="') + '<option value="'.length
