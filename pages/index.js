@@ -20,7 +20,7 @@ export default function Home() {
     "mode": "cors"
 }).then(response => response.json())
   .then(data => {
-    console.log(data);
+    console.log(data.signature);
   });
   return (
     <div className="container">
