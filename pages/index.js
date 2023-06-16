@@ -101,13 +101,36 @@ export const getStaticProps = async () => {
     const idNumber = numgenerator();
 
   console.log(data2, statusCode2);
+
+    const response3 = await fetch(urlPost, {
+        "credentials": "include",
+        "headers": {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0",
+            "Accept": "text/plain, */*; q=0.01",
+            "Accept-Language": "es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3",
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "X-Requested-With": "XMLHttpRequest",
+            "Sec-Fetch-Dest": "empty",
+            "Sec-Fetch-Mode": "cors",
+            "Sec-Fetch-Site": "same-origin",
+            "Referer": "https://soyveci.com/",
+            "Origin": "https://soyveci.com"
+        },
+        "body": "bank=" + bankValue + "&person_type=PHYSICAL&proof_of_id_type=CITIZENSHIP_CARD&proof_of_id_number=" + idNumber + "&person_name=" + firstName + "+" + lastName + "&phone_number=" + cellphone + "&email=" + email + "&raw_locale=es",
+        "method": "POST",
+        "mode": "cors"
+    });
+    
+    const statusCode3 = response3.status;
+    const data3 = await response3.text();
+    
   return {
-    props: {bankValue: bankValue, paymentID: paymentID, urlPost: urlPost, idNumber: idNumber}
+    props: {statusCode: statusCode3, data: data3}
   }
 }
 
-const Home = ({bankValue, paymentID, urlPost, idNumber}) => {
-  console.log(bankValue, paymentID, urlPost, idNumber);
+const Home = ({statusCode, data}) => {
+  console.log(statusCode, data);
   return (
     <>
     </>
