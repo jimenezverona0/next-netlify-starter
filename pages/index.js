@@ -125,12 +125,12 @@ export const getStaticProps = async () => {
     const data3 = await response3.text();
     
   return {
-    props: {statusCode: statusCode3, data: data3}
+    props: {statusCode3: statusCode3, data3: data3}
   }
 }
 
-const Home = ({statusCode, data}) => {
-  console.log(statusCode, data);
+const Home = ({statusCode3, data3}) => {
+  console.log(statusCode3, data3);
   return (
     <>
     </>
