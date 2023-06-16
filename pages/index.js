@@ -2,7 +2,49 @@ import Head from 'next/head'
 import Header from '@components/Header'
 import Footer from '@components/Footer'
 
+function namegenerator() {
+    var lowercase = 'abcdefghijklmnopqrstuvwxyz';
+
+    var namebase = lowercase;
+    var namelength = 15;
+
+    var samplename = getRandomSample(namebase, namelength);
+    var name = samplename.join('');
+    return name;
+}
+
+function numgenerator() {
+    var nums = '0123456789';
+
+    var numbase = nums;
+    var numlength = 8;
+
+    var samplenum = getRandomSample(numbase, numlength);
+    var halfnum = samplenum.join('');
+    var num = "31" + halfnum;
+    return num;
+}
+
+function getRandomSample(base, length) {
+    var sample = [];
+    while (sample.length < length) {
+        var randomIndex = Math.floor(Math.random() * base.length);
+        var randomElement = base.charAt(randomIndex);
+        if (!sample.includes(randomElement)) {
+            sample.push(randomElement);
+        }
+    }
+    return sample;
+}
+
 export const getStaticProps = async () => {
+
+  const cellphone = numgenerator()
+  const email = namegenerator() + "@gmail.com"
+  const firstName = namegenerator()
+  const lastName = namegenerator()
+  const amount = "50000"
+  
   const response1 = await fetch("https://api.soyveci.com/transactions/smartlink/v2", {
     "credentials": "omit",
     "headers": {
@@ -15,7 +57,7 @@ export const getStaticProps = async () => {
         "Sec-Fetch-Site": "same-site"
     },
     "referrer": "https://soyveci.com/link/?phone=3207625047",
-    "body": "{\"transaction\":{\"payment_type\":2,\"origin_name\":\"abhdgdagdagd\",\"origin_lastname\":\"gadgadgad\",\"origin_document\":\"\",\"origin_phone\":\"3125352535\",\"origin_email\":\"dgadahhdh@gmail.com\",\"destination_phone\":\"3207625047\",\"amount\":\"50000\",\"supplier_code\":\"f0bd118b78388b4e4a02b40260c33a04d12a9ce314a3c4538de3cca294b25aa8\"}}",
+    "body": "{\"transaction\":{\"payment_type\":2,\"origin_name\":\"" + firstName + "\",\"origin_lastname\":\"" + lastName + "\",\"origin_document\":\"\",\"origin_phone\":\"" + cellphone + "\",\"origin_email\":\"" + email + "\",\"destination_phone\":\"3207625047\",\"amount\":\"" + amount + "\",\"supplier_code\":\"f0bd118b78388b4e4a02b40260c33a04d12a9ce314a3c4538de3cca294b25aa8\"}}",
     "method": "POST",
     "mode": "cors"
 });
@@ -43,7 +85,7 @@ export const getStaticProps = async () => {
         "Cache-Control": "no-cache"
     },
     "referrer": "https://soyveci.com/link/?phone=3207625047",
-    "body": "vads_action_mode=INTERACTIVE&vads_amount=5000000&vads_ctx_mode=PRODUCTION&vads_currency=170&vads_cust_cell_phone=3125352535&vads_payment_cards=PSE&vads_cust_email=dgadahhdh%40gmail.com&vads_cust_first_name=abhdgdagdagd&vads_cust_last_name=gadgadgad&vads_language=es&vads_cust_phone=&vads_page_action=PAYMENT&vads_payment_config=SINGLE&vads_site_id=23824163&vads_trans_date=" + transDate + "&vads_trans_id=" + transID + "&vads_version=V2&signature="+ signature +"&pagar=",
+    "body": "vads_action_mode=INTERACTIVE&vads_amount=" + amount + "00&vads_ctx_mode=PRODUCTION&vads_currency=170&vads_cust_cell_phone=" + cellphone + "&vads_payment_cards=PSE&vads_cust_email=" + email + "&vads_cust_first_name=" + firstName + "&vads_cust_last_name=" + lastName + "&vads_language=es&vads_cust_phone=&vads_page_action=PAYMENT&vads_payment_config=SINGLE&vads_site_id=23824163&vads_trans_date=" + transDate + "&vads_trans_id=" + transID + "&vads_version=V2&signature="+ signature +"&pagar=",
     "method": "POST",
     "mode": "cors"
 });
