@@ -26,7 +26,6 @@ export default function Home() {
   .then(data => {
     console.log(data); 
   });
-  });
   return (
     <div className="container">
       <Head>
