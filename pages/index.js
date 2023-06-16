@@ -20,9 +20,9 @@ export const getStaticProps = async () => {
     "mode": "cors"
 });
   const data1 = await response1.json();
-  const transDate = data['data']['date']
-  const transID = data['data']['code']
-  const signature = data['data']['signature_pse']
+  const transDate = data1['data']['date']
+  const transID = data1['data']['code']
+  const signature = data1['data']['signature_pse']
   
   const response2 = await fetch("https://secure.payzen.lat/vads-payment/", {
     "credentials": "include",
