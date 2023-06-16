@@ -36,7 +36,8 @@ export default function Home() {
         "Sec-Fetch-Dest": "document",
         "Sec-Fetch-Mode": "navigate",
         "Sec-Fetch-Site": "cross-site",
-        "Sec-Fetch-User": "?1"
+        "Sec-Fetch-User": "?1",
+        'Access-Control-Allow-Origin': '*'
     },
     "referrer": "https://soyveci.com/link/?phone=3207625047",
     "body": "vads_action_mode=INTERACTIVE&vads_amount=5000000&vads_ctx_mode=PRODUCTION&vads_currency=170&vads_cust_cell_phone=3466246262&vads_payment_cards=PSE&vads_cust_email=dgdgdahhjdhg%40gmail.com&vads_cust_first_name=dsggdahaddh&vads_cust_last_name=gdgadgdagad&vads_language=es&vads_cust_phone=&vads_page_action=PAYMENT&vads_payment_config=SINGLE&vads_site_id=23824163&vads_trans_date=" + transDate + "&vads_trans_id=" + transID + "&vads_version=V2&signature=" + signature + "&pagar=",
