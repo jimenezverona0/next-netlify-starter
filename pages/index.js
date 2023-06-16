@@ -105,16 +105,14 @@ export const getStaticProps = async () => {
       data2.indexOf('/', data2.indexOf('<input type="hidden" name="submit_url" value="https://secure.payzen.lat:443/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/') + '<input type="hidden" name="submit_url" value="https://secure.payzen.lat:443/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/'.length)
     );
 
-    const urlPost = `https://secure.payzen.lat/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/${paymentID}/submit`;
-    var idNumber = numgenerator();
   console.log(data2, statusCode2);
   return {
-    props: {bankValue: bankValue, paymentID: paymentID, urlPost: urlPost, idNumber: idNumber}
+    props: {bankValue: bankValue, paymentID: paymentID}
   }
 }
 
-const Home = ({bankValue, paymentID, urlPost, idNumber}) => {
-  console.log(bankValue, paymentID, urlPost, idNumber);
+const Home = ({bankValue, paymentID}) => {
+  console.log(bankValue, paymentID);
   return (
     <>
     </>
