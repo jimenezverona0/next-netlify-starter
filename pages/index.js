@@ -21,8 +21,7 @@ export default function Home() {
 }).then(response => response.json())
   .then(data => {
     console.log(data);
-    console.log(data['data']);
-    console.log(data['signature']);
+    console.log(data['data']['signature']);
   });
   return (
     <div className="container">
