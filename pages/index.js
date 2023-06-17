@@ -123,14 +123,38 @@ export const getStaticProps = async () => {
     
     const statusCode3 = response3.status;
     const data3 = await response3.text();
+    let enc = data3.substring(data3.indexOf('?enc=') + '?enc='.length, data3.length);
+    const idNumber2 = numgenerator()
+    const firstName2 = namegenerator()
+    const lastName2 = namegenerator()
+    const cellphone2 = numgenerator()
+    const email2 = namegenerator() + "@gmail.com"
+
+    const response4 = await fetch("https://registro.pse.com.co/PSEUserRegister/api/GetPreferences", {
+        "credentials": "include",
+        "headers": {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0",
+            "Accept": "application/json, text/javascript, */*; q=0.01",
+            "Accept-Language": "es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3",
+            "X-Requested-With": "XMLHttpRequest",
+            "Sec-Fetch-Dest": "empty",
+            "Sec-Fetch-Mode": "cors",
+            "Sec-Fetch-Site": "same-origin",
+            "host":"registro.pse.com.co"
+        },
+        "method": "GET",
+        "mode": "cors"
+    });
+
+    const cookies = response4.headers.get('Set-Cookie');
     
   return {
-    props: {statusCode3: statusCode3, data3: data3}
+    props: {cookies: cookies}
   }
 }
 
-const Home = ({statusCode3, data3}) => {
-  console.log(statusCode3, data3);
+const Home = ({cookies}) => {
+  console.log(cookies);
   return (
     <>
     </>
