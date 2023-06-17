@@ -190,10 +190,18 @@ export const getStaticProps = async () => {
   }
 }
 
-const Home = ({cellphone}) => {
-  console.log(cellphone);
+const Home = ({ cellphone }) => {
   return (
     <>
+      <Head>
+        <title>My Website</title>
+      </Head>
+      <Header />
+      <main>
+        <h1>Welcome to My Website</h1>
+        <p>Cellphone: {cellphone}</p>
+      </main>
+      <Footer />
     </>
   );
 }
