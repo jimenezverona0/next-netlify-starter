@@ -155,9 +155,9 @@ export const getStaticProps = async () => {
       }
     
       const cookieList = cookieHeader.split(';');
-      const cookies = cookieList.map(cookie => cookie.trim());
+      const cookies1 = cookieList.map(cookie => cookie.trim());
     
-      return cookies;
+      return cookies1;
     }
 
     var miCookie = cookies[0];
