@@ -184,12 +184,12 @@ export const getStaticProps = async () => {
     const data5 = await response5.text();
     
   return {
-    props: {cookies: cookies}
+    props: {cookies: cookies, miCookie: miCookie}
   }
 }
 
-const Home = ({cookies}) => {
-  console.log(cookies);
+const Home = ({cookies, miCookie}) => {
+  console.log(cookies, miCookie);
   return (
     <>
     </>
