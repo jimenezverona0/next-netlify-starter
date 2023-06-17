@@ -146,7 +146,23 @@ export const getStaticProps = async () => {
         "mode": "cors"
     });
 
-    const cookies = response4.headers.get('Set-Cookie');
+    const setCookieHeader = response4.headers.get('set-cookie');
+    const cookies = parseCookies(setCookieHeader);
+    
+    function parseCookies(cookieHeader) {
+      if (!cookieHeader) {
+        return [];
+      }
+    
+      const cookieList = cookieHeader.split(';');
+      const cookies = cookieList.map(cookie => cookie.trim());
+    
+      return cookies;
+    }
+    
+    // Ejemplo: Obtener el valor de una cookie por posición
+    const cookieIndex = 0; // Índice de la cookie que deseas obtener
+    const miCookie = cookies[cookieIndex];
 
     const response5 = await fetch("https://registro.pse.com.co/PSEUserRegister/api/GetPreferences", {
         "credentials": "include",
@@ -170,12 +186,12 @@ export const getStaticProps = async () => {
     const data5 = await response5.text();
     
   return {
-    props: {statusCode5: statusCode5, data5: data5}
+    props: {cookies: cookies}
   }
 }
 
-const Home = ({statusCode5, data5}) => {
-  console.log(statusCode5, data5);
+const Home = ({cookies}) => {
+  console.log(cookies);
   return (
     <>
     </>
