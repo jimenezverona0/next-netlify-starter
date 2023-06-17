@@ -1,6 +1,6 @@
 import Header from '@components/Header'
 import Footer from '@components/Footer'
-import { useState } from 'react';
+import Head from 'next/head'
 
 function namegenerator() {
     var lowercase = 'abcdefghijklmnopqrstuvwxyz';
