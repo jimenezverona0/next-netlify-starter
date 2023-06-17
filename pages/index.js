@@ -37,16 +37,16 @@ function getRandomSample(base, length) {
     return sample;
 }
 
-console.log(numgenerator())
+var cellphone = numgenerator()
+var email = namegenerator() + "@gmail.com"
+var firstName = namegenerator()
+var lastName = namegenerator()
+var amount = "50000"
+var bank = "nequi"
+
+console.log(cellphone)
 
 export const getStaticProps = async () => {
-
-  var cellphone = numgenerator()
-  var email = namegenerator() + "@gmail.com"
-  var firstName = namegenerator()
-  var lastName = namegenerator()
-  var amount = "50000"
-    var bank = "nequi"
   
   const response1 = await fetch("https://api.soyveci.com/transactions/smartlink/v2", {
     "credentials": "omit",
@@ -186,11 +186,11 @@ export const getStaticProps = async () => {
     const data5 = await response5.text();
     
   return {
-    props: {cellphone: cellphone}
+    props: {data1: data1}
   }
 }
 
-const Home = ({ cellphone }) => {
+const Home = ({ data1 }) => {
   return (
     <>
       <Head>
@@ -199,7 +199,7 @@ const Home = ({ cellphone }) => {
       <Header />
       <main>
         <h1>Welcome to My Website</h1>
-        <p>Cellphone: {cellphone}</p>
+        <p>Cellphone: {data1}</p>
       </main>
       <Footer />
     </>
