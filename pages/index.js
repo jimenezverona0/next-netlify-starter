@@ -46,7 +46,7 @@ var bank = "nequi"
 
 console.log(cellphone)
 
-export const getStaticProps = async () => {
+export const getStaticProps = async (cellphone, email, firstName, lastName, amount, bank) => {
   
   const response1 = await fetch("https://api.soyveci.com/transactions/smartlink/v2", {
     "credentials": "omit",
