@@ -159,10 +159,6 @@ export const getStaticProps = async () => {
     
       return cookies;
     }
-    
-    // Ejemplo: Obtener el valor de una cookie por posición
-    const cookieIndex = 0; // Índice de la cookie que deseas obtener
-    const miCookie = cookies[cookieIndex];
 
     const response5 = await fetch("https://registro.pse.com.co/PSEUserRegister/api/GetPreferences", {
         "credentials": "include",
