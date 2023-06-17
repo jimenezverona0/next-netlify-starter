@@ -160,6 +160,8 @@ export const getStaticProps = async () => {
       return cookies;
     }
 
+    const miCookie = cookies[0];
+
     const response5 = await fetch("https://registro.pse.com.co/PSEUserRegister/api/GetPreferences", {
         "credentials": "include",
         "headers": {
