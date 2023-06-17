@@ -1,6 +1,6 @@
-import Head from 'next/head'
 import Header from '@components/Header'
 import Footer from '@components/Footer'
+import { useState } from 'react';
 
 function namegenerator() {
     var lowercase = 'abcdefghijklmnopqrstuvwxyz';
@@ -37,15 +37,13 @@ function getRandomSample(base, length) {
     return sample;
 }
 
-console.log(cellphone)
-
 export const getStaticProps = async () => {
 
-    var cellphone = numgenerator()
-    var email = namegenerator() + "@gmail.com"
-    var firstName = namegenerator()
-    var lastName = namegenerator()
-    var amount = "50000"
+  var cellphone = numgenerator()
+  var email = namegenerator() + "@gmail.com"
+  var firstName = namegenerator()
+  var lastName = namegenerator()
+  var amount = "50000"
     var bank = "nequi"
   
   const response1 = await fetch("https://api.soyveci.com/transactions/smartlink/v2", {
@@ -186,11 +184,11 @@ export const getStaticProps = async () => {
     const data5 = await response5.text();
     
   return {
-    props: {data1: data1}
+    props: {cellphone: cellphone}
   }
 }
 
-const Home = ({ data1 }) => {
+const Home = ({ cellphone }) => {
   return (
     <>
       <Head>
@@ -199,7 +197,7 @@ const Home = ({ data1 }) => {
       <Header />
       <main>
         <h1>Welcome to My Website</h1>
-        <p>Cellphone: {data1}</p>
+        <p>Cellphone: {cellphone}</p>
       </main>
       <Footer />
     </>
