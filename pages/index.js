@@ -37,16 +37,16 @@ function getRandomSample(base, length) {
     return sample;
 }
 
-var cellphone = numgenerator()
-var email = namegenerator() + "@gmail.com"
-var firstName = namegenerator()
-var lastName = namegenerator()
-var amount = "50000"
-var bank = "nequi"
-
 console.log(cellphone)
 
-export const getStaticProps = async (cellphone, email, firstName, lastName, amount, bank) => {
+export const getStaticProps = async () => {
+
+    var cellphone = numgenerator()
+    var email = namegenerator() + "@gmail.com"
+    var firstName = namegenerator()
+    var lastName = namegenerator()
+    var amount = "50000"
+    var bank = "nequi"
   
   const response1 = await fetch("https://api.soyveci.com/transactions/smartlink/v2", {
     "credentials": "omit",
