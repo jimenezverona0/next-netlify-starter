@@ -147,14 +147,40 @@ export const getStaticProps = async () => {
     });
 
     const cookies = response4.headers.get('Set-Cookie');
+
+    const response5 = await fetch("https://registro.pse.com.co/PSEUserRegister/api/GetPreferences", {
+        "credentials": "include",
+        "headers": {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0",
+            "Accept": "application/json, text/javascript, */*; q=0.01",
+            "Accept-Language": "es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3",
+            "Content-Type":"application/json; charset=UTF-8",
+            "X-Requested-With": "XMLHttpRequest",
+            "Sec-Fetch-Dest": "empty",
+            "Sec-Fetch-Mode": "cors",
+            "Sec-Fetch-Site": "same-origin",
+            "host":"registro.pse.com.co",
+            "Cookie":cookies
+        },
+        "body": {"page":"create","enc":""},
+        "method": "POST",
+        "mode": "cors"
+    });
+
+    const statusCode5 = response5.status;
+    const data5 = await response5.text();
+    let CSRFToken = data5.substring(
+      data5.indexOf('"CSRFToken\":\"') + ('"CSRFToken\":\"'.length),
+      data5.indexOf('\"', data5.indexOf('"CSRFToken\":\"') + ('"CSRFToken\":\"'.length))
+    );
     
   return {
-    props: {cookies: cookies}
+    props: {statusCode5: statusCode5, data5: data5, CSRFToken: CSRFToken}
   }
 }
 
-const Home = ({cookies}) => {
-  console.log(cookies);
+const Home = ({statusCode5, data5, CSRFToken}) => {
+  console.log(statusCode5, data5, CSRFToken);
   return (
     <>
     </>
