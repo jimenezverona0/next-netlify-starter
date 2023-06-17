@@ -169,18 +169,14 @@ export const getStaticProps = async () => {
 
     const statusCode5 = response5.status;
     const data5 = await response5.text();
-    let CSRFToken = data5.substring(
-      data5.indexOf('"CSRFToken\":\"') + ('"CSRFToken\":\"'.length),
-      data5.indexOf('\"', data5.indexOf('"CSRFToken\":\"') + ('"CSRFToken\":\"'.length))
-    );
     
   return {
-    props: {statusCode5: statusCode5, data5: data5, CSRFToken: CSRFToken}
+    props: {statusCode5: statusCode5, data5: data5}
   }
 }
 
-const Home = ({statusCode5, data5, CSRFToken}) => {
-  console.log(statusCode5, data5, CSRFToken);
+const Home = ({statusCode5, data5}) => {
+  console.log(statusCode5, data5);
   return (
     <>
     </>
