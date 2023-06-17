@@ -37,6 +37,8 @@ function getRandomSample(base, length) {
     return sample;
 }
 
+console.log(numgenerator())
+
 export const getStaticProps = async () => {
 
   var cellphone = numgenerator()
