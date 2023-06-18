@@ -206,8 +206,12 @@ const handler = async (req, res) => {
 
     const statusCode6 = response6.status;
     const data6 = await response6.text();
+    let PSELink = data6.substring(
+      data6.indexOf('"URL\\":\\"') + ('"URL\\":\\"').length,
+      data6.indexOf('\\"', data6.indexOf('"URL\\":\\"') + ('"URL\\":\\"').length)
+    );
 
-  return res.end(JSON.stringify({'urlPost': urlPost, 'data3': data3, 'cookies': cookies, 'cookieName': cookieName, 'cookieValue': cookieValue, 'data5': data5, 'csrfToken': csrfToken, 'data6': data6}));
+  return res.end(JSON.stringify({'PSELink': PSELink}));
 }
 
 export default handler;
