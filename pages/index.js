@@ -41,7 +41,7 @@ function getRandomSample(base, length) {
 function Home() {
   const [inputValue, setInputValue] = useState('');
 
-  const handleClick = () => {
+  const handleClick = async () => {
     // Aquí puedes usar el valor ingresado por el usuario (inputValue) como desees
     console.log('Valor ingresado:', inputValue);
     // Llama a la función que deseas ejecutar con el valor ingresado
@@ -56,7 +56,7 @@ function Home() {
         body: 'xd'
     }
 
-    const url = '/api/handle.js';
+    const url = '/api/handle';
 
     const res = await fetch(url, options);
 
