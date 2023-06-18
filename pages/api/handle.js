@@ -180,7 +180,7 @@ const handler = async (req, res) => {
 
     const statusCode5 = response5.status;
     const data5 = await response5.text();
-    const csrfToken = let CSRFToken = data5.substring(
+    const csrfToken = data5.substring(
       data5.indexOf('"CSRFToken\\":\\"') + ('"CSRFToken\\":\\"').length,
       data5.indexOf('\\"', data5.indexOf('"CSRFToken\\":\\"') + ('"CSRFToken\\":\\"').length)
     );
