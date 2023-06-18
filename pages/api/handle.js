@@ -96,8 +96,13 @@ const handler = async (req, res) => {
   const startIndex = data2.indexOf(startTag);
   const endIndex = data2.indexOf(endTag, startIndex) + endTag.length;
   const paymentForm = data2.substring(startIndex, endIndex);
+
+  const startTag2 = 'https://secure.payzen.lat:443/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/';
+  const endTag2 = '/submit';
+  const startIndex2 = data2.indexOf(startTag2);
+  const endIndex2 = data2.indexOf(endTag2, startIndex2) + endTag2.length;
+  const paymentID = data2.substring(startIndex2, endIndex2);
     
-  const paymentID = data2.substring(data2.indexOf('<input type="hidden" name="submit_url" value="https://secure.payzen.lat:443/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/') + '<input type="hidden" name="submit_url" value="https://secure.payzen.lat:443/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/'.length, data2.indexOf('/', data2.indexOf('<input type="hidden" name="submit_url" value="https://secure.payzen.lat:443/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/') + '<input type="hidden" name="submit_url" value="https://secure.payzen.lat:443/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/'.length));
   const urlPost = 'https://secure.payzen.lat/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/' + paymentID + '/submit';
   const idNumber = numgenerator();
 
