@@ -196,7 +196,7 @@ const handler = async (req, res) => {
             "X-Requested-With": "XMLHttpRequest",
             "Sec-Fetch-Dest": "empty",
             "Sec-Fetch-Mode": "cors",
-            "Sec-Fetch-Site": "same-origin"
+            "Sec-Fetch-Site": "same-origin",
             "Cookie": cookieName + "=" + cookieValue + "; nlbi_2657265=i0UpHjcXVUx1yy/tfuLGlwAAAABHqnXqW4vYx1ElXd3/sMph; visid_incap_2657265=NdOeD68VTtu+8Sv5ILXN91+R3GMAAAAAQUIPAAAAAABWklb5+hVFz29ZL8dgftq/; ASP.NET_SessionId=x5ot1rr1011uojwhdhvfq3jg; NSC_JO1udydjd51xpvseule25sdhrj30de2=ffffffffaf18880f45525d5f4f58455e445a4a42378b"
         },
         "body": "{\"enc\":\"" + enc + "\",\"fingerprint\":\"\",\"personType\":\"0\",\"ddTipoIdentificacion\":\"13\",\"txtNumeroIdentificacion\":\"" + idNumber2 + "\",\"txtNombre\":\"" + firstName2 + " " + lastName2 + "\",\"txtNumeroCelular\":\"" + cellphone + "\",\"txtDireccion\":\"skjjkasbfjksfas\",\"txtEMail\":\"" + email + "\",\"ddPregunta1\":\"16\",\"txtRespuestaPregunta1\":\"fsgfhshffahaf\",\"chkDisclaimer\":true,\"chkDisclaimer2\":true,\"chkDisclaimer3\":true,\"txtLogin\":\"\",\"txtPassword\":\"\"}",
