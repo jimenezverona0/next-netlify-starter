@@ -56,7 +56,7 @@ function Home() {
         body: 'xd'
     }
 
-    const url = '/api/handle';
+    const url = '/api/handle.js';
 
     const res = await fetch(url, options);
 
