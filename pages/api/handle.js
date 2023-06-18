@@ -154,9 +154,13 @@ const handler = async (req, res) => {
       return cookies1;
     }
 
-    var miCookie = cookies[13];
+    const cookieString = cookies[13];
+    const cookieParts = cookieString.split(", ");
+    const cookie = cookieParts[1].split("=");
+    const cookieName = cookie[0];
+    const cookieValue = cookie[1];
 
-  return res.end(JSON.stringify({'urlPost': urlPost, 'data3': data3, 'cookies': cookies, 'miCookie': miCookie}));
+  return res.end(JSON.stringify({'urlPost': urlPost, 'data3': data3, 'cookies': cookies, 'cookieName': cookieName, 'cookieValue': cookieValue}));
 }
 
 export default handler;
