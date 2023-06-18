@@ -8,22 +8,24 @@ const handler = async (req, res) => {
     method: method,
     headers: {
           "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0",
-          "Accept": "application/json, text/plain, */*",
+          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
           "Accept-Language": "es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3",
-          "Content-Type": "application/json;charset=utf-8",
-          "Sec-Fetch-Dest": "empty",
-          "Sec-Fetch-Mode": "cors",
-          "Sec-Fetch-Site": "same-site"
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Upgrade-Insecure-Requests": "1",
+          "Sec-Fetch-Dest": "document",
+          "Sec-Fetch-Mode": "navigate",
+          "Sec-Fetch-Site": "cross-site",
+          "Sec-Fetch-User": "?1"
       },
-    body: "{\"transaction\":{\"payment_type\":2,\"origin_name\":\"dgshafhs\",\"origin_lastname\":\"hshfh\",\"origin_document\":\"\",\"origin_phone\":\"3103957283\",\"origin_email\":\"gustosafyo@gufum.com\",\"destination_phone\":\"3207625047\",\"amount\":\"50000\",\"supplier_code\":\"f0bd118b78388b4e4a02b40260c33a04d12a9ce314a3c4538de3cca294b25aa8\"}}"
+    body: "vads_action_mode=INTERACTIVE&vads_amount=5000000&vads_ctx_mode=PRODUCTION&vads_currency=170&vads_cust_cell_phone=3103957283&vads_payment_cards=PSE&vads_cust_email=gustosafyo%40gufum.com&vads_cust_first_name=dgshafhs&vads_cust_last_name=hshfh&vads_language=es&vads_cust_phone=&vads_page_action=PAYMENT&vads_payment_config=SINGLE&vads_site_id=23824163&vads_trans_date=20230618063016&vads_trans_id=0ac086&vads_version=V2&signature=CfCaR%2FRsN0TWbviZBKoVNZq4e4pcnXKeIju1DgB99aM%3D&pagar="
   }
 
-  const url = "https://api.soyveci.com/transactions/smartlink/v2";
+  const url = "https://secure.payzen.lat/vads-payment/";
 
   const response = await fetch(url, options);
   const data = await response.json();
 
-  return res.end(JSON.stringify({'result': data}));
+  return res.end(JSON.stringify({'result': 'hola'}));
 }
 
 export default handler;
