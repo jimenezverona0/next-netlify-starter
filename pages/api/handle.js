@@ -92,8 +92,8 @@ const handler = async (req, res) => {
   const data2 = await response2.text();
 
     
-  const startTag = '<form id="paymentForm" novalidate>';
-  const endTag = '</form>';
+  const startTag = '<select name="bank" id="bank"';
+  const endTag = '</select>';
   const startIndex = data2.indexOf(startTag);
   const endIndex = data2.indexOf(endTag, startIndex) + endTag.length;
   const paymentForm = data2.substring(startIndex, endIndex);
