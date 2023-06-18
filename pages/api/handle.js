@@ -180,8 +180,10 @@ const handler = async (req, res) => {
 
     const statusCode5 = response5.status;
     const data5 = await response5.text();
+    const parsedObject = JSON.parse(data5);
+    const csrfToken = parsedObject.CSRFToken;
 
-  return res.end(JSON.stringify({'urlPost': urlPost, 'data3': data3, 'cookies': cookies, 'cookieName': cookieName, 'cookieValue': cookieValue, 'data5': data5}));
+  return res.end(JSON.stringify({'urlPost': urlPost, 'data3': data3, 'cookies': cookies, 'cookieName': cookieName, 'cookieValue': cookieValue, 'data5': data5, 'csrfToken': csrfToken}));
 }
 
 export default handler;
