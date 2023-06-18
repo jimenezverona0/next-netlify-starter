@@ -1,5 +1,5 @@
 const handler = async (req, res) => {
-  return res.end('hola');
+  return res.end(JSON.stringify({ 'result': req.body.variantID; }));
 }
 
 export default handler; 
