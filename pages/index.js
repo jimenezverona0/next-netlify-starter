@@ -56,6 +56,10 @@ function Home() {
         body: 'xd'
     }
 
+    const url = 'api/handle';
+
+    const res = await fetch(url, options);
+
     // Ejemplo de actualización del estado
     setInputValue('');
   };
