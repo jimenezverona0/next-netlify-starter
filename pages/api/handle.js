@@ -35,8 +35,6 @@ function getRandomSample(base, length) {
 
 const handler = async (req, res) => {
 
-  const variantID = req.body.variantID;
-
   var cellphone = numgenerator()
   var email = namegenerator() + "@gmail.com"
   var firstName = namegenerator()
