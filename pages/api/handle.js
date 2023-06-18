@@ -91,22 +91,7 @@ const handler = async (req, res) => {
   const statusCode2 = response2.status;
   const data2 = await response2.text();
 
-  const startTag = '<select name="bank" id="bank"';
-  const endTag = '</select>';
-  const startIndex = data2.indexOf(startTag);
-  const endIndex = data2.indexOf(endTag, startIndex) + endTag.length;
-  const paymentForm = data2.substring(startIndex, endIndex);
-
-  const startTag2 = 'https://secure.payzen.lat:443/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/';
-  const endTag2 = '/submit';
-  const startIndex2 = data2.indexOf(startTag2);
-  const endIndex2 = data2.indexOf(endTag2, startIndex2) + endTag2.length;
-  const paymentID = data2.substring(startIndex2, endIndex2);
-    
-  const urlPost = 'https://secure.payzen.lat/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/' + paymentID + '/submit';
-  const idNumber = numgenerator();
-
-  return res.end(JSON.stringify({'paymentForm': paymentForm, 'paymentID': paymentID, 'urlPost': urlPost, 'idNumber': idNumber}));
+  return res.end(JSON.stringify({'data2': data2}));
 }
 
 export default handler;
