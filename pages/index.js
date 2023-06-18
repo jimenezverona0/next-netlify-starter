@@ -45,6 +45,7 @@ function Home() {
   const handleClick = async () => {
     // Aquí puedes usar el valor ingresado por el usuario (inputValue) como desees
     console.log('Valor ingresado:', inputValue);
+    console.log('Banco seleccionado:', selectedOption);
     // Llama a la función que deseas ejecutar con el valor ingresado
     // ...
     const method = 'POST';
