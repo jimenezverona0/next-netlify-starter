@@ -1,5 +1,5 @@
 const handler = async (req, res) => {
-  return res.end(JSON.stringify({'result': 'hola'}));
+  return res.end('hola');
 }
 
 export default handler; 
