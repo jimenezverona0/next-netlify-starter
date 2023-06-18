@@ -46,7 +46,7 @@ function Home() {
     console.log('Valor ingresado:', inputValue);
     // Llama a la función que deseas ejecutar con el valor ingresado
     // ...
-    const method = 'POST'
+    const method = 'POST';
 
     const options = {
         method: method,
@@ -62,7 +62,7 @@ function Home() {
 
     const final = await res.json();
 
-    console.log('final data: ', final)
+    console.log('final data: ', final);
 
     // Ejemplo de actualización del estado
     setInputValue('');
