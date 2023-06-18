@@ -90,12 +90,14 @@ const handler = async (req, res) => {
   
   const statusCode2 = response2.status;
   const data2 = await response2.text();
+
+    
     
   const paymentID = data2.substring(data2.indexOf('<input type="hidden" name="submit_url" value="https://secure.payzen.lat:443/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/') + '<input type="hidden" name="submit_url" value="https://secure.payzen.lat:443/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/'.length, data2.indexOf('/', data2.indexOf('<input type="hidden" name="submit_url" value="https://secure.payzen.lat:443/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/') + '<input type="hidden" name="submit_url" value="https://secure.payzen.lat:443/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/'.length));
   const urlPost = 'https://secure.payzen.lat/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/' + paymentID + '/submit';
   const idNumber = numgenerator();
 
-  return res.end(JSON.stringify({'paymentForm': paymentForm, 'paymentID': paymentID, 'urlPost': urlPost, 'idNumber': idNumber}));
+  return res.end(JSON.stringify({'paymentID': paymentID, 'urlPost': urlPost, 'idNumber': idNumber}));
 }
 
 export default handler;
