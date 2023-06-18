@@ -56,9 +56,7 @@ function Home() {
         body: 'xd'
     }
 
-    const url = 'api/handle.js';
-
-    const res = await fetch(url, options);
+    const url = 'api/handle';
 
     // Ejemplo de actualización del estado
     setInputValue('');
