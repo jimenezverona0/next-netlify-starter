@@ -185,7 +185,29 @@ const handler = async (req, res) => {
       data5.indexOf('\\"', data5.indexOf('"CSRFToken\\":\\"') + ('"CSRFToken\\":\\"').length)
     );
 
-  return res.end(JSON.stringify({'urlPost': urlPost, 'data3': data3, 'cookies': cookies, 'cookieName': cookieName, 'cookieValue': cookieValue, 'data5': data5, 'csrfToken': csrfToken}));
+    const response6 = await fetch("https://registro.pse.com.co/PSEUserRegister/api/ReturnToPayment", {
+        "credentials": "include",
+        "headers": {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0",
+            "Accept": "application/json, text/javascript, */*; q=0.01",
+            "Accept-Language": "es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3",
+            "Content-Type": "application/json; charset=utf-8",
+            "CSRFToken": csrfToken,
+            "X-Requested-With": "XMLHttpRequest",
+            "Sec-Fetch-Dest": "empty",
+            "Sec-Fetch-Mode": "cors",
+            "Sec-Fetch-Site": "same-origin"
+            "Cookie": cookieName + "=" + cookieValue + "; nlbi_2657265=i0UpHjcXVUx1yy/tfuLGlwAAAABHqnXqW4vYx1ElXd3/sMph; visid_incap_2657265=NdOeD68VTtu+8Sv5ILXN91+R3GMAAAAAQUIPAAAAAABWklb5+hVFz29ZL8dgftq/; ASP.NET_SessionId=x5ot1rr1011uojwhdhvfq3jg; NSC_JO1udydjd51xpvseule25sdhrj30de2=ffffffffaf18880f45525d5f4f58455e445a4a42378b"
+        },
+        "body": "{\"enc\":\"" + enc + "\",\"fingerprint\":\"\",\"personType\":\"0\",\"ddTipoIdentificacion\":\"13\",\"txtNumeroIdentificacion\":\"" + idNumber2 + "\",\"txtNombre\":\"" + firstName2 + " " + lastName2 + "\",\"txtNumeroCelular\":\"" + cellphone + "\",\"txtDireccion\":\"skjjkasbfjksfas\",\"txtEMail\":\"" + email + "\",\"ddPregunta1\":\"16\",\"txtRespuestaPregunta1\":\"fsgfhshffahaf\",\"chkDisclaimer\":true,\"chkDisclaimer2\":true,\"chkDisclaimer3\":true,\"txtLogin\":\"\",\"txtPassword\":\"\"}",
+        "method": "POST",
+        "mode": "cors"
+    });
+
+    const statusCode6 = response6.status;
+    const data6 = await response6.text();
+
+  return res.end(JSON.stringify({'urlPost': urlPost, 'data3': data3, 'cookies': cookies, 'cookieName': cookieName, 'cookieValue': cookieValue, 'data5': data5, 'csrfToken': csrfToken, 'data6': data6}));
 }
 
 export default handler;
