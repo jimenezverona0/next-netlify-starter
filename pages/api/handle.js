@@ -117,8 +117,46 @@ const handler = async (req, res) => {
     
     const statusCode3 = response3.status;
     const data3 = await response3.text();
+    let enc = data3.substring(data3.indexOf('?enc=') + '?enc='.length, data3.length);
+    const idNumber2 = numgenerator()
+    const firstName2 = namegenerator()
+    const lastName2 = namegenerator()
+    const cellphone2 = numgenerator()
+    const email2 = namegenerator() + "@gmail.com"
 
-  return res.end(JSON.stringify({'paymentID': paymentID, 'urlPost': urlPost, 'data3': data3}));
+    const response4 = await fetch("https://registro.pse.com.co/PSEUserRegister/api/GetPreferences", {
+        "credentials": "include",
+        "headers": {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0",
+            "Accept": "application/json, text/javascript, */*; q=0.01",
+            "Accept-Language": "es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3",
+            "X-Requested-With": "XMLHttpRequest",
+            "Sec-Fetch-Dest": "empty",
+            "Sec-Fetch-Mode": "cors",
+            "Sec-Fetch-Site": "same-origin",
+            "host":"registro.pse.com.co"
+        },
+        "method": "GET",
+        "mode": "cors"
+    });
+
+    const setCookieHeader = response4.headers.get('set-cookie');
+    const cookies = parseCookies(setCookieHeader);
+    
+    function parseCookies(cookieHeader) {
+      if (!cookieHeader) {
+        return [];
+      }
+    
+      const cookieList = cookieHeader.split(';');
+      const cookies1 = cookieList.map(cookie => cookie.trim());
+    
+      return cookies1;
+    }
+
+    var miCookie = cookies[13];
+
+  return res.end(JSON.stringify({'urlPost': urlPost, 'data3': data3, 'cookies': cookies, 'miCookie': miCookie}));
 }
 
 export default handler;
