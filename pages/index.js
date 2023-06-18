@@ -62,8 +62,10 @@ function Home() {
 
     const res = await fetch(url, options);
 
+    const final = await res.json();
+
     // Ejemplo de actualización del estado
-    setInputValue('');
+    setInputValue(final.PSELink);
   };
 
   return (
