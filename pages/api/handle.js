@@ -110,7 +110,7 @@ const handler = async (req, res) => {
             "Referer": "https://soyveci.com/",
             "Origin": "https://soyveci.com"
         },
-        "body": "bank=" + bankValue + "&person_type=PHYSICAL&proof_of_id_type=CITIZENSHIP_CARD&proof_of_id_number=" + idNumber + "&person_name=" + firstName + "+" + lastName + "&phone_number=" + cellphone + "&email=" + email + "&raw_locale=es",
+        "body": "bank=" + bank + "&person_type=PHYSICAL&proof_of_id_type=CITIZENSHIP_CARD&proof_of_id_number=" + idNumber + "&person_name=" + firstName + "+" + lastName + "&phone_number=" + cellphone + "&email=" + email + "&raw_locale=es",
         "method": "POST",
         "mode": "cors"
     });
