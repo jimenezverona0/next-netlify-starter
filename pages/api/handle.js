@@ -42,7 +42,7 @@ const handler = async (req, res) => {
   var firstName = namegenerator()
   var lastName = namegenerator()
   var amount = "50000"
-  var bank = "nequi"
+  var bank = "davivienda"
   
   const response1 = await fetch("https://api.soyveci.com/transactions/smartlink/v2", {
         "credentials": "omit",
