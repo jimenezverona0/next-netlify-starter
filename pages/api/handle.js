@@ -97,11 +97,16 @@ const handler = async (req, res) => {
   const startIndex = data2.indexOf(startTag);
   const endIndex = data2.indexOf(endTag, startIndex) + endTag.length;
   const paymentForm = data2.substring(startIndex, endIndex);
+
+  const regex = new RegExp(`<option value="([^"]*)">.*${bank.toUpperCase()}.*</option>`);
+  const match = paymentForm.match(regex);
+  const bankValue = match[1];
+    
   const paymentID = data2.substring(data2.indexOf('<input type="hidden" name="submit_url" value="https://secure.payzen.lat:443/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/') + '<input type="hidden" name="submit_url" value="https://secure.payzen.lat:443/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/'.length, data2.indexOf('/', data2.indexOf('<input type="hidden" name="submit_url" value="https://secure.payzen.lat:443/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/') + '<input type="hidden" name="submit_url" value="https://secure.payzen.lat:443/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/'.length));
   const urlPost = 'https://secure.payzen.lat/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/' + paymentID + '/submit';
   const idNumber = numgenerator();
 
-  return res.end(JSON.stringify({'paymentForm': paymentForm, 'paymentID': paymentID, 'urlPost': urlPost, 'idNumber': idNumber}));
+  return res.end(JSON.stringify({'bankValue': bankValue, 'paymentID': paymentID, 'urlPost': urlPost, 'idNumber': idNumber}));
 }
 
 export default handler;
