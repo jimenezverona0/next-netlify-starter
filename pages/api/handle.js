@@ -158,7 +158,7 @@ const handler = async (req, res) => {
     const cookieParts = cookieString.split(", ");
     const cookie = cookieParts[1].split("=");
     const cookieName = cookie[0];
-    const cookieValue = cookie[1];
+    const cookieValue = cookie[1] + "==";
 
   return res.end(JSON.stringify({'urlPost': urlPost, 'data3': data3, 'cookies': cookies, 'cookieName': cookieName, 'cookieValue': cookieValue}));
 }
