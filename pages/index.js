@@ -46,6 +46,23 @@ function Home() {
     console.log('Valor ingresado:', inputValue);
     // Llama a la función que deseas ejecutar con el valor ingresado
     // ...
+    const method = 'POST'
+
+    const options = {
+        method: method,
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify({'variantID': inputValue}) 
+    }
+
+    const url = '/api/handle';
+
+    const res = await fetch(url, options);
+
+    const final = await res.json();
+
+    console.log('final data: ', final)
 
     // Ejemplo de actualización del estado
     setInputValue('');
