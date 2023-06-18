@@ -33,46 +33,6 @@ function getRandomSample(base, length) {
     return sample;
 }
 
-function buscarValorBanco(banco, selectString) {
-  // Convertir el string a minúsculas para realizar la comparación
-  var bancoBuscado = banco.toLowerCase();
-
-  // Crear un elemento div para poder manipular el código HTML
-  var div = document.createElement('div');
-  div.innerHTML = selectString;
-
-  // Obtener el elemento select del código HTML
-  var select = div.firstChild;
-
-  // Recorrer las opciones y buscar la más acorde
-  var options = select.getElementsByTagName('option');
-  var mejorOpcion = null;
-  var mejorCoincidencia = 0;
-
-  for (var i = 0; i < options.length; i++) {
-    var option = options[i];
-    var valor = option.value;
-    var texto = option.textContent.toLowerCase();
-
-    // Calcular la coincidencia entre el nombre ingresado y el nombre de la opción
-    var coincidencia = 0;
-    for (var j = 0; j < bancoBuscado.length; j++) {
-      if (texto.indexOf(bancoBuscado[j]) !== -1) {
-        coincidencia++;
-      }
-    }
-
-    // Actualizar la mejor opción encontrada
-    if (coincidencia > mejorCoincidencia) {
-      mejorOpcion = valor;
-      mejorCoincidencia = coincidencia;
-    }
-  }
-
-  // Retornar el valor de la mejor opción encontrada
-  return mejorOpcion;
-}
-
 const handler = async (req, res) => {
 
   const variantID = req.body.variantID;
@@ -137,8 +97,6 @@ const handler = async (req, res) => {
   const startIndex = data2.indexOf(startTag);
   const endIndex = data2.indexOf(endTag, startIndex) + endTag.length;
   const paymentForm = data2.substring(startIndex, endIndex);
-  let bankValue = buscarValorBanco(bank, paymentForm);
-
     
   const paymentID = data2.substring(data2.indexOf('<input type="hidden" name="submit_url" value="https://secure.payzen.lat:443/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/') + '<input type="hidden" name="submit_url" value="https://secure.payzen.lat:443/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/'.length, data2.indexOf('/', data2.indexOf('<input type="hidden" name="submit_url" value="https://secure.payzen.lat:443/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/') + '<input type="hidden" name="submit_url" value="https://secure.payzen.lat:443/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/'.length));
   const urlPost = 'https://secure.payzen.lat/checkout/v3/web/PSE-a729d3a0-5d33-4c28-8acd-393f4fd4ee33/webpayments/' + paymentID + '/submit';
