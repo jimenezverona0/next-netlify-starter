@@ -53,7 +53,7 @@ function Home() {
         headers: {
             'content-type': 'application/json'
         },
-        body: JSON.stringify({'variantID': inputValue}) 
+        body: 'xd'
     }
 
     const url = '/api/handle';
