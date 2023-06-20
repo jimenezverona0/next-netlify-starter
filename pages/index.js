@@ -87,7 +87,7 @@ function Home() {
       />
       <br />
       <br />
-      <select value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)} style="margin-top: 10px;">
+      <select value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}>
         <option value="0">Selecciona una opción</option>
         <option value="1558">BAN100</option>
         <option value="1059">BANCAMIA S.A.</option>
@@ -127,10 +127,10 @@ function Home() {
       </select>
       <br />
       <br />
-      <button onClick={handleClick} style="margin-top: 10px;">Ejecutar función</button>
+      <button onClick={handleClick}>Ejecutar función</button>
       <br />
       <br />
-      <button onClick={handleCopy} style="margin-top: 10px;">Copiar</button>
+      <button onClick={handleCopy}>Copiar</button>
     </>
   );
 }
