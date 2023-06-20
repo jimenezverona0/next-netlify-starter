@@ -85,6 +85,8 @@ function Home() {
         onChange={(e) => setInputValue(e.target.value)}
         placeholder="Ingresa un valor"
       />
+      <br />
+      <br />
       <select value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}>
         <option value="0">Selecciona una opción</option>
         <option value="1558">BAN100</option>
@@ -123,7 +125,11 @@ function Home() {
         <option value="1811">RAPPIPAY</option>
         <option value="1019">SCOTIABANK COLPATRIA</option>
       </select>
+      <br />
+      <br />
       <button onClick={handleClick}>Ejecutar función</button>
+      <br />
+      <br />
       <button onClick={handleCopy}>Copiar</button>
     </>
   );
