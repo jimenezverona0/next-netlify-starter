@@ -41,6 +41,7 @@ function getRandomSample(base, length) {
 function Home() {
   const [inputValue, setInputValue] = useState('');
   const [selectedOption, setSelectedOption] = useState('');
+  const link = useState('')
 
   const handleClick = async () => {
     // Aquí puedes usar el valor ingresado por el usuario (inputValue) como desees
@@ -65,11 +66,11 @@ function Home() {
     const final = await res.json();
 
     // Ejemplo de actualización del estado
-    setInputValue(final.PSELink);
+    document.getElementById('link').innerText = final.PSELink;
   };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(inputValue);
+    navigator.clipboard.writeText(link);
   };
 
   return (
@@ -130,7 +131,7 @@ function Home() {
       <button onClick={handleClick}>Ejecutar función</button>
       <br />
       <br />
-      <p1 id="link">[Aquí aparecerá tu enlace]</p1>
+      <p1 id="link" value={link}>[Aquí aparecerá tu enlace]</p1>
       <br />
       <br />
       <button onClick={handleCopy}>Copiar</button>
