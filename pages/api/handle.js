@@ -133,7 +133,6 @@ const handler = async (req, res) => {
 
     const statusCode4 = response4.status;
     const data4 = await response4.text();
-    const parser = new DOMParser();
 
   return res.end(JSON.stringify({'statusCode4': statusCode4, 'data4': data4}));
 }
