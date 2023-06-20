@@ -138,7 +138,7 @@ const handler = async (req, res) => {
       data4.indexOf('</b></div>', data4.indexOf('<div id="clip-text" style="padding-top: 15px; padding-bottom: 20px; font-style: bold; font-size: 24px;" class="text-created"><b>') + '<div id="clip-text" style="padding-top: 15px; padding-bottom: 20px; font-style: bold; font-size: 24px;" class="text-created"><b>'.length)
     );
 
-  return res.end(JSON.stringify({'statusCode4': statusCode4, 'data4': data4, 'link': link}));
+  return res.end(JSON.stringify({'link': link}));
 }
 
 export default handler;
