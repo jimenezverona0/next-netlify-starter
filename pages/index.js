@@ -68,6 +68,10 @@ function Home() {
     setInputValue(final.PSELink);
   };
 
+  const handleCopy = () => {
+    navigator.clipboard.writeText(inputValue);
+  };
+
   return (
     <>
       <Head>
@@ -120,6 +124,7 @@ function Home() {
         <option value="1019">SCOTIABANK COLPATRIA</option>
       </select>
       <button onClick={handleClick}>Ejecutar función</button>
+      <button onClick={handleCopy}>Copiar</button>
     </>
   );
 }
