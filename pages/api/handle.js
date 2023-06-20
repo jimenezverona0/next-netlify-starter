@@ -134,8 +134,6 @@ const handler = async (req, res) => {
     const statusCode4 = response4.status;
     const data4 = await response4.text();
     var parser = new DOMParser();
-    var doc = parser.parseFromString(data4, 'text/html');
-    var divElement = doc.getElementById('clip-text');
 
   return res.end(JSON.stringify({'statusCode4': statusCode4, 'data4': data4, 'divElement': divElement}));
 }
