@@ -130,6 +130,9 @@ function Home() {
       <button onClick={handleClick}>Ejecutar función</button>
       <br />
       <br />
+      <h1 id="title">[Aquí aparecerá tu enlace]</h1>
+      <br />
+      <br />
       <button onClick={handleCopy}>Copiar</button>
     </>
   );
