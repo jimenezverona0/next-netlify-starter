@@ -65,7 +65,7 @@ function Home() {
     const final = await res.json();
 
     // Ejemplo de actualización del estado
-    document.getElementById('link').innerText = final.PSELink;
+    document.getElementById('link').innerText = final.link;
   };
 
   const handleCopy = () => {
