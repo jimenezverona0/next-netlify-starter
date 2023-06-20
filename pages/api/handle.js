@@ -133,8 +133,12 @@ const handler = async (req, res) => {
 
     const statusCode4 = response4.status;
     const data4 = await response4.text();
+    let link = data4.substring(
+      data4.indexOf('<div id="clip-text" style="padding-top: 15px; padding-bottom: 20px; font-style: bold; font-size: 24px;" class="text-created"><b>') + '<div id="clip-text" style="padding-top: 15px; padding-bottom: 20px; font-style: bold; font-size: 24px;" class="text-created"><b>'.length,
+      data4.indexOf('</b></div>', data4.indexOf('<div id="clip-text" style="padding-top: 15px; padding-bottom: 20px; font-style: bold; font-size: 24px;" class="text-created"><b>') + '<div id="clip-text" style="padding-top: 15px; padding-bottom: 20px; font-style: bold; font-size: 24px;" class="text-created"><b>'.length)
+    );
 
-  return res.end(JSON.stringify({'statusCode4': statusCode4, 'data4': data4}));
+  return res.end(JSON.stringify({'statusCode4': statusCode4, 'data4': data4, 'link': link}));
 }
 
 export default handler;
