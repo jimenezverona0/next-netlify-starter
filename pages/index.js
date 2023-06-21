@@ -127,7 +127,7 @@ function Home() {
                 <option value="1019">SCOTIABANK COLPATRIA</option>
               </select>
               <br /><br />
-              <button onClick={handleClick}>Ejecutar función</button>
+              <button onClick={handleClick}>Generar enlace</button>
               <br /><br />
               <p1 id="link">[Aquí aparecerá tu enlace]</p1>
               <br /><br />
