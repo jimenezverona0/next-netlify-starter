@@ -130,7 +130,7 @@ const handler = async (req, res) => {
             "Sec-Fetch-User": "?1"
         },
         "method": "GET",
-        "mode": "cors"
+        "mode": "cors",
         "redirect": "manual"
     });
 
