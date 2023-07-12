@@ -130,15 +130,15 @@ const handler = async (req, res) => {
             "Sec-Fetch-User": "?1"
         },
         "method": "GET",
-        "mode": "cors",
-        "redirect": "manual"
+        "mode": "cors"
     });
 
     const statusCode4 = response4.status;
     const data4 = await response4.text();
     const headers = response4.headers;
+    const redirectURL = response4.url;
 
-  return res.end(JSON.stringify({'link': data3, 'statusCode': statusCode, 'statusCode2': statusCode2, 'statusCode3': statusCode3, 'urlPost': urlPost, 'headers': headers, 'checkoutURL': checkoutURL, 'data4': data4}));
+  return res.end(JSON.stringify({'link': data3, 'statusCode': statusCode, 'statusCode2': statusCode2, 'statusCode3': statusCode3, 'urlPost': urlPost, 'headers': headers, 'checkoutURL': checkoutURL, 'data4': data4, 'redirectURL': redirectURL}));
 }
 
 export default handler;
