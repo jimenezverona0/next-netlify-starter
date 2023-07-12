@@ -115,9 +115,31 @@ const handler = async (req, res) => {
     
     const statusCode3 = response3.status;
     const data3 = await response3.text();
-    const headers = response3.headers;
 
-  return res.end(JSON.stringify({'link': data3, 'statusCode': statusCode, 'statusCode2': statusCode2, 'statusCode3': statusCode3, 'urlPost': urlPost, 'headers': headers}));
+    const obj = JSON.parse(data3);
+    const checkoutURL = obj.checkoutURL;
+
+    const response4 = await fetch(checkoutURL, {
+        "credentials": "include",
+        "headers": {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/115.0",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+            "Accept-Language": "es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3",
+            "Upgrade-Insecure-Requests": "1",
+            "Sec-Fetch-Dest": "document",
+            "Sec-Fetch-Mode": "navigate",
+            "Sec-Fetch-Site": "same-origin",
+            "Sec-Fetch-User": "?1"
+        },
+        "method": "GET",
+        "mode": "cors"
+    });
+
+    const statusCode4 = response4.status;
+    const data4 = await response4.text();
+    const headers = response4.headers;
+
+  return res.end(JSON.stringify({'link': data3, 'statusCode': statusCode, 'statusCode2': statusCode2, 'statusCode3': statusCode3, 'urlPost': urlPost, 'headers': headers, 'checkoutURL': checkoutURL, 'data4': data4}));
 }
 
 export default handler;
