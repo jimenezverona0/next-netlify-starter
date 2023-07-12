@@ -99,18 +99,16 @@ const handler = async (req, res) => {
   const response3 = await fetch(urlPost, {
         "credentials": "include",
         "headers": {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0",
-            "Accept": "text/plain, */*; q=0.01",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/115.0",
+            "Accept": "application/json, text/javascript, */*; q=0.01",
             "Accept-Language": "es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3",
-            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "Content-Type": "application/json; charset=utf-8",
             "X-Requested-With": "XMLHttpRequest",
             "Sec-Fetch-Dest": "empty",
             "Sec-Fetch-Mode": "cors",
-            "Sec-Fetch-Site": "same-origin",
-            "Referer": "https://soyveci.com/",
-            "Origin": "https://soyveci.com"
+            "Sec-Fetch-Site": "same-origin"
         },
-        "body": "nationalId=" + idNumber + "&proofOfIdType=CedulaDeCiudadania&email="+ email +"&bankCode=" + bank + "&address=bsfhggdsgsdg&city=dsgsdhdshs",
+        "body": "{\"nationalId\":\"" + idNumber + "\",\"proofOfIdType\":\"CedulaDeCiudadania\",\"email\":\"" + email + "\",\"bankCode\":\"" + bank + "\",\"address\":\"bsfhggdsgsdg\",\"city\":\"dsgsdhdshs\"}",
         "method": "POST",
         "mode": "cors"
     });
