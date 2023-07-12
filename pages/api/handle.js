@@ -131,6 +131,7 @@ const handler = async (req, res) => {
         },
         "method": "GET",
         "mode": "cors"
+        "redirect": "manual"
     });
 
     const statusCode4 = response4.status;
