@@ -66,6 +66,8 @@ function Home() {
 
     // Ejemplo de actualización del estado
     document.getElementById('link').innerText = final.link;
+
+    console.log(final);
   };
 
   const handleCopy = () => {
