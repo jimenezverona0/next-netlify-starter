@@ -115,8 +115,9 @@ const handler = async (req, res) => {
     
     const statusCode3 = response3.status;
     const data3 = await response3.text();
+    const headers = response3.headers;
 
-  return res.end(JSON.stringify({'link': data3, 'statusCode': statusCode, 'statusCode2': statusCode2, 'statusCode3': statusCode3, 'urlPost': urlPost}));
+  return res.end(JSON.stringify({'link': data3, 'statusCode': statusCode, 'statusCode2': statusCode2, 'statusCode3': statusCode3, 'urlPost': urlPost, 'headers': headers}));
 }
 
 export default handler;
