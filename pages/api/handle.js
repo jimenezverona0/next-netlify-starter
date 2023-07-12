@@ -110,7 +110,7 @@ const handler = async (req, res) => {
             "Referer": "https://soyveci.com/",
             "Origin": "https://soyveci.com"
         },
-        "body": "{\"nationalId\":\"" + idNumber + "\",\"proofOfIdType\":\"CedulaDeCiudadania\",\"email\":\"" + email + "\",\"bankCode\":\"" + bank + "\",\"address\":\"rhgfsdhshsd\",\"city\":\"shshddhd\"}",
+        "body": "nationalId=" + idNumber + "&proofOfIdType=CedulaDeCiudadania&email="+ email +"&bankCode=" + bank + "&address=bsfhggdsgsdg&city=dsgsdhdshs",
         "method": "POST",
         "mode": "cors"
     });
