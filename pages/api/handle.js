@@ -115,9 +115,7 @@ const handler = async (req, res) => {
     
     const statusCode3 = response3.status;
     const data3 = await response3.text();
-
-    const obj = JSON.parse(data3);
-    const checkoutURL = obj.checkoutURL;
+    const checkoutURL = data3.match(/"checkoutURL":"(.*?)"/)[1];
 
     const response4 = await fetch(checkoutURL, {
         "credentials": "include",
