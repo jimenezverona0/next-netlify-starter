@@ -85,6 +85,7 @@ function Home() {
               {/* VECI... */}
               <div style={{ marginRight: "20px" }}>
                   <div style={{ marginBottom: "20px" }}>
+                      <h1 id="title1">VECI (fuera de servicio temporalmente)</h1>
                       <input
                         type="text"
                         value={inputValue}
@@ -141,6 +142,7 @@ function Home() {
               {/* BITSO... */}
               <div>
                   <div style={{ marginBottom: "20px" }}>
+                      <h1 id="title2">BITSO</h1>
                       <input
                         type="text"
                         value={inputValue}
@@ -189,7 +191,7 @@ function Home() {
                       <br /><br />
                       <button onClick={handleClick}>Generar enlace</button>
                       <br /><br />
-                      <p1 id="link">[Aquí aparecerá tu enlace]</p1>
+                      <p1 id="link2">[Aquí aparecerá tu enlace]</p1>
                       <br /><br />
                       <button onClick={handleCopy}>Copiar</button>
                   </div>
