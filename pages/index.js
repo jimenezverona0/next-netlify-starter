@@ -82,7 +82,7 @@ function Home() {
           </Head>
           <Header />
           {/* VECI... */}
-          <div style={{ marginBottom: "20px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", height: "100vh" }}>
+          <div style={{ marginBottom: "20px" }}>
               <input
                 type="text"
                 value={inputValue}
@@ -136,7 +136,7 @@ function Home() {
               <button onClick={handleCopy}>Copiar</button>
           </div>
           {/* BITSO... */}
-          <div style={{ marginBottom: "20px", marginLeft: "20px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", height: "100vh" }}>
+          <div style={{ marginBottom: "20px" }}>
               <input
                 type="text"
                 value={inputValue}
