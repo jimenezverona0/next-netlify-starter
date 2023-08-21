@@ -113,7 +113,7 @@ function Home() {
         headers: {
             'content-type': 'application/json'
         },
-        body: JSON.stringify({'amount':inputValue2, 'bank': selectedOption2})
+        body: JSON.stringify({'amount':inputValue2, 'bank': selectedOption2, 'auth': authHeader['Auth']})
     }
 
     const url = '/api/handle2';
