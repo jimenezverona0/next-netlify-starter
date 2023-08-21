@@ -41,6 +41,8 @@ function getRandomSample(base, length) {
 function Home() {
   const [inputValue, setInputValue] = useState('');
   const [selectedOption, setSelectedOption] = useState('');
+  const [inputValue2, setInputValue2] = useState('');
+  const [selectedOption2, setSelectedOption2] = useState('');
 
   const handleClick = async () => {
     // Aquí puedes usar el valor ingresado por el usuario (inputValue) como desees
@@ -174,11 +176,11 @@ function Home() {
                       <input
                         type="text"
                         value={inputValue2}
-                        onChange={(i) => setInputValue(i.target.value)}
+                        onChange={(e) => setInputValue2(e.target.value)}
                         placeholder="Ingresa un valor"
                       />
                       <br /><br />
-                      <select value={selectedOption2} onChange={(i) => setSelectedOption(i.target.value)}>
+                      <select value={selectedOption2} onChange={(e) => setSelectedOption2(e.target.value)}>
                         <option value="0">Selecciona una opción</option>
                         <option value="1558">BAN100</option>
                         <option value="1059">BANCAMIA S.A.</option>
