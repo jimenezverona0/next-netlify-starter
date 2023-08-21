@@ -71,13 +71,11 @@ const handler = async (req, res) => {
   var amount = req.body.amount;
   var bank = req.body.bank;
 
-  const httpMethod = 'POST';
+  const httpMethod = 'GET';
   const url = 'https://bitso.com/api/v3/funding_references?currency=cop&network=pse&protocol=pse&asset=cop&amount=' + amount;
   const authHeader = buildAuthHeader(httpMethod, url);
-  
-  const authorizationValue = authHeader['Authorization'];
 
-  return res.end(JSON.stringify({'link': authorizationValue}));
+  return res.end(JSON.stringify({'link': authHeader}));
 }
 
 export default handler;
