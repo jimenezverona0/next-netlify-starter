@@ -66,7 +66,7 @@ function Home() {
 
   const handleClick = async () => {
     const authHeader = buildAuthHeader(inputValue);
-    console.log(inputValue)
+    console.log(authHeader, namegenerator())
     // Aquí puedes usar el valor ingresado por el usuario (inputValue) como desees
     console.log('Valor ingresado:', inputValue);
     console.log('Banco seleccionado:', selectedOption);
