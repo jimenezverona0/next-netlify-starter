@@ -38,6 +38,35 @@ function getRandomSample(base, length) {
     return sample;
 }
 
+function buildAuthHeader(httpMethod, url) {
+    
+    const jsonPayload = '';
+    const key = "rUjoHeypjS";
+    const secret = "03c7eb7284738312de8c4fc7509ab65d";
+    const urlComponents = new URL(url);
+    let requestPath = urlComponents.pathname;
+    if (urlComponents.search !== '') {
+        requestPath += '?' + urlComponents.search;
+    }
+    const nonce = Date.now();
+    const msgConcat = nonce + httpMethod.toUpperCase() + requestPath + jsonPayload;
+    const hmac = require('crypto').createHmac('sha256', utf8ToBuffer(secret));
+    hmac.update(utf8ToBuffer(msgConcat));
+    const signature = hmac.digest('hex');
+    return {
+        'Authorization': `Bitso ${key}:${nonce}:${signature}`
+    };
+}
+
+function utf8ToBuffer(str) {
+    const buffer = new ArrayBuffer(str.length);
+    const view = new Uint8Array(buffer);
+    for (let i = 0; i < str.length; i++) {
+        view[i] = str.charCodeAt(i);
+    }
+    return buffer;
+}
+
 function Home() {
   const [inputValue, setInputValue] = useState('');
   const [selectedOption, setSelectedOption] = useState('');
@@ -73,6 +102,11 @@ function Home() {
   };
 
   const handleClick2 = async () => {
+
+    const httpMethod = 'GET';
+    const url = 'https://bitso.com/api/v3/funding_references?currency=cop&network=pse&protocol=pse&asset=cop&amount=' + inputValue2;
+    const authHeader = buildAuthHeader(httpMethod, url);
+    console.log(authHeader);
     // Aquí puedes usar el valor ingresado por el usuario (inputValue) como desees
     console.log('Valor ingresado:', inputValue2);
     console.log('Banco seleccionado:', selectedOption2);
