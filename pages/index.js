@@ -38,6 +38,11 @@ function getRandomSample(base, length) {
     return sample;
 }
 
+function currentMilliTime() {
+    const nonce = String(Math.round(Date.now() * 1000000));
+    return nonce;
+}
+
 function buildAuthHeader(amount) {
 
     const httpMethod = 'GET';
@@ -45,12 +50,8 @@ function buildAuthHeader(amount) {
     const jsonPayload = '';
     const key = "rUjoHeypjS";
     const secret = "03c7eb7284738312de8c4fc7509ab65d";
-    const urlComponents = new URL(url);
-    let requestPath = urlComponents.pathname;
-    if (urlComponents.search !== '') {
-        requestPath += urlComponents.search;
-    }
-    const nonce = Date.now();
+    let requestPath = '/api/v3/funding_references?currency=cop&network=pse&protocol=pse&asset=cop&amount=' + amount;
+    const nonce = currentMilliTime();
     const msgConcat = nonce + httpMethod.toUpperCase() + requestPath + jsonPayload;
     const hmac = require('crypto').createHmac('sha256', secret);
     hmac.update(msgConcat, 'utf-8');
