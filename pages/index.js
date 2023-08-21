@@ -70,6 +70,34 @@ function Home() {
     console.log(final);
   };
 
+  const handleClick2 = async () => {
+    // Aquí puedes usar el valor ingresado por el usuario (inputValue) como desees
+    console.log('Valor ingresado:', inputValue);
+    console.log('Banco seleccionado:', selectedOption);
+    // Llama a la función que deseas ejecutar con el valor ingresado
+    // ...
+    const method = 'POST';
+
+    const options = {
+        method: method,
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify({'amount':inputValue, 'bank': selectedOption})
+    }
+
+    const url = '/api/handle2';
+
+    const res = await fetch(url, options);
+
+    const final = await res.json();
+
+    // Ejemplo de actualización del estado
+    document.getElementById('link2').innerText = final.link;
+
+    console.log(final);
+  };
+
   const handleCopy = () => {
     navigator.clipboard.writeText(document.getElementById('link').innerText);
   };
