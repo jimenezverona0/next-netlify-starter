@@ -56,7 +56,7 @@ function buildAuthHeader(amount) {
                             .update(msgConcat)
                             .digest('hex');
     return {
-        `Bitso ${key}:${nonce}:${signature}`
+        'Auth' : `Bitso ${key}:${nonce}:${signature}`
     };
 }
 
