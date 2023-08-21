@@ -99,7 +99,7 @@ function Home() {
   };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(document.getElementById('link').innerText);
+    navigator.clipboard.writeText(document.getElementById('link2').innerText);
   };
 
   return (
