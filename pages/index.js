@@ -72,8 +72,8 @@ function Home() {
 
   const handleClick2 = async () => {
     // Aquí puedes usar el valor ingresado por el usuario (inputValue) como desees
-    console.log('Valor ingresado:', inputValue);
-    console.log('Banco seleccionado:', selectedOption);
+    console.log('Valor ingresado:', inputValue2);
+    console.log('Banco seleccionado:', selectedOption2);
     // Llama a la función que deseas ejecutar con el valor ingresado
     // ...
     const method = 'POST';
@@ -83,7 +83,7 @@ function Home() {
         headers: {
             'content-type': 'application/json'
         },
-        body: JSON.stringify({'amount':inputValue, 'bank': selectedOption})
+        body: JSON.stringify({'amount':inputValue2, 'bank': selectedOption2})
     }
 
     const url = '/api/handle2';
@@ -173,12 +173,12 @@ function Home() {
                       <h2 id="title2">BITSO</h2>
                       <input
                         type="text"
-                        value={inputValue}
-                        onChange={(e) => setInputValue(e.target.value)}
+                        value={inputValue2}
+                        onChange={(i) => setInputValue(i.target.value)}
                         placeholder="Ingresa un valor"
                       />
                       <br /><br />
-                      <select value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}>
+                      <select value={selectedOption2} onChange={(i) => setSelectedOption(i.target.value)}>
                         <option value="0">Selecciona una opción</option>
                         <option value="1558">BAN100</option>
                         <option value="1059">BANCAMIA S.A.</option>
