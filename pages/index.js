@@ -104,8 +104,8 @@ function Home() {
   const handleClick2 = async () => {
 
     const httpMethod = 'GET';
-    const url = 'https://bitso.com/api/v3/funding_references?currency=cop&network=pse&protocol=pse&asset=cop&amount=' + inputValue2;
-    const authHeader = buildAuthHeader(httpMethod, url);
+    const url2 = 'https://bitso.com/api/v3/funding_references?currency=cop&network=pse&protocol=pse&asset=cop&amount=' + inputValue2;
+    const authHeader = buildAuthHeader(httpMethod, url2);
     console.log(authHeader);
     // Aquí puedes usar el valor ingresado por el usuario (inputValue) como desees
     console.log('Valor ingresado:', inputValue2);
