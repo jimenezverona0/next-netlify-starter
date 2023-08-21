@@ -48,13 +48,13 @@ function buildAuthHeader(amount) {
     const urlComponents = new URL(url);
     let requestPath = urlComponents.pathname;
     if (urlComponents.search !== '') {
-        requestPath += '?' + urlComponents.search;
+        requestPath += urlComponents.search;
     }
     const nonce = Date.now();
     const msgConcat = nonce + httpMethod.toUpperCase() + requestPath + jsonPayload;
-    const signature = require('crypto').createHmac('sha256', secret)
-                            .update(msgConcat)
-                            .digest('hex');
+    const hmac = require('crypto').createHmac('sha256', secret);
+    hmac.update(msgConcat, 'utf-8');
+    const signature = hmac.digest('hex');
     return {
         'Auth' : `Bitso ${key}:${nonce}:${signature}`
     };
