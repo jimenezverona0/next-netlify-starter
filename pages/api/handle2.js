@@ -38,10 +38,6 @@ function buildAuthHeader(httpMethod, url) {
     const jsonPayload = '';
     const key = "rUjoHeypjS";
     const secret = "03c7eb7284738312de8c4fc7509ab65d";
-    
-    if (jsonPayload === '{}' || jsonPayload === {}) {
-        jsonPayload = '';
-    }
     const urlComponents = new URL(url);
     let requestPath = urlComponents.pathname;
     if (urlComponents.search !== '') {
