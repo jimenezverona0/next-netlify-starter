@@ -112,7 +112,7 @@ function Home() {
     console.log(final);
 
     // Ejemplo de actualización del estado
-    document.getElementById('link2').innerText = final.data2;
+    document.getElementById('link2').innerText = final.link;
   };
 
   const handleCopy2 = () => {
