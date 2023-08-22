@@ -151,24 +151,7 @@ const handler = async (req, res) => {
   const setCookieHeader = response4.headers.get('set-cookie');
   const cookies = parseCookies(setCookieHeader);
 
-  function parseCookies(cookieHeader) {
-    if (!cookieHeader) {
-      return [];
-    }
-
-    const cookieList = cookieHeader.split(';');
-    const cookies1 = cookieList.map(cookie => cookie.trim());
-
-    return cookies1;
-  }
-
-  const cookieString = cookies[13];
-  const cookieParts = cookieString.split(", ");
-  const cookie = cookieParts[1].split("=");
-  const cookieName = cookie[0];
-  const cookieValue = cookie[1] + "==";
-
-  return res.end(JSON.stringify({'link': redirectURL, 'cookieName': cookieName, 'cookieValue': cookieValue}));
+  return res.end(JSON.stringify({'link': redirectURL, 'cookies': cookies}));
 }
 
 export default handler;
