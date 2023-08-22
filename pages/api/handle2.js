@@ -73,7 +73,7 @@ const handler = async (req, res) => {
   const startIndex = url.indexOf(keyword) + keyword.length;
   const token = url.substring(startIndex);
 
-  const response2 = await fetch(url, {
+  const response2 = await fetch('https://pay.dlocal.com/gmf-apm/sale-continue', {
         "credentials": "include",
         "headers": {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/116.0",
@@ -84,8 +84,10 @@ const handler = async (req, res) => {
             "Sec-Fetch-Mode": "navigate",
             "Sec-Fetch-Site": "none",
             "Sec-Fetch-User": "?1"
+            "Content-Type": "application/json;charset=utf-8"
         },
-        "method": "GET",
+        "body": "{\"token\":\"" + token + "\",\"bank\":\"" + bank + "\",\"view\":\"BANK_SELECTION\"}",        
+        "method": "POST",
         "mode": "cors"
     });
 
