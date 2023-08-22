@@ -87,7 +87,7 @@ function Home() {
 
   const handleClick2 = async () => {
     const authHeader = generateSignature();
-    console.log(authHeader, namegenerator())
+    console.log(authHeader, namegenerator(), Date.now())
     // Aquí puedes usar el valor ingresado por el usuario (inputValue) como desees
     console.log('Valor ingresado:', inputValue2);
     console.log('Banco seleccionado:', selectedOption2);
