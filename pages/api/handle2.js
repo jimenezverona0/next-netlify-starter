@@ -157,13 +157,25 @@ const handler = async (req, res) => {
     
       const cookieList = cookieHeader.split(';');
       const cookies1 = cookieList.map(cookie => cookie.trim());
-    
-      return cookies1;
+
+      for (var i = 0; i < cookies1.length; i++) {
+          if (cookies1[i].includes("incap_ses")) {
+              cookieString = cookies1[i];
+              break;
+          }
+      }
+
+      const cookieParts = cookieString.split(", ");
+      const cookiee = cookieParts[1].split("=");
+      const cookieName = cookiee[0];
+      const cookieValue = cookiee[1] + "==";
+      
+      return cookieName, cookieValue;
     }
   
-  const cookies = parseCookies(setCookieHeader);
+  const cookieName, cookieValue = parseCookies(setCookieHeader);
 
-  return res.end(JSON.stringify({'link': redirectURL, 'cookies': cookies}));
+  return res.end(JSON.stringify({'link': redirectURL, 'cookieName': cookieName, 'cookieValue': cookieValue}));
 }
 
 export default handler;
