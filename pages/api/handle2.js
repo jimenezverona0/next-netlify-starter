@@ -123,7 +123,7 @@ const handler = async (req, res) => {
     });
 
   const statusCode3 = response3.status;
-  const data3 = await response3.json();
+  const data3 = await response3.text();
   
   return res.end(JSON.stringify({'data2': data3}));
 }
