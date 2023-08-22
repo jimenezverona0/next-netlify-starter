@@ -158,6 +158,8 @@ const handler = async (req, res) => {
       const cookieList = cookieHeader.split(';');
       const cookies1 = cookieList.map(cookie => cookie.trim());
 
+      let cookieString = "";
+
       for (var i = 0; i < cookies1.length; i++) {
           if (cookies1[i].includes("incap_ses")) {
               cookieString = cookies1[i];
