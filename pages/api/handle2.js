@@ -72,8 +72,32 @@ const handler = async (req, res) => {
   const keyword = 'payments-continue/';
   const startIndex = url.indexOf(keyword) + keyword.length;
   const token = url.substring(startIndex);
+
+  const response2 = await fetch(url, {
+        "credentials": "omit",
+        "headers": {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0",
+            'accept': 'application/json, text/plain, */*',
+            'accept-encoding': 'gzip, deflate, br',
+            'accept-language': 'es',
+            'bts-client-method': 'conversion',
+            'bts-client-name': 'bitbank-wallet-web',
+            'bts-client-platform': 'web',
+            'bts-client-version': 'local',
+            'sec-ch-ua': '"Not?A_Brand";v="8", "Chromium";v="108", "Google Chrome";v="108"',
+            'sec-ch-ua-mobile': '?1',
+            'sec-ch-ua-platform': 'Android',
+            'sec-fetch-dest': 'empty',
+            'sec-fetch-site': 'same-origin'
+        },
+        "method": "GET",
+        "mode": "cors"
+    });
+
+  const statusCode2 = response2.status;
+  const data2 = await response2.json();
   
-  return res.end(JSON.stringify({'data2': token}));
+  return res.end(JSON.stringify({'data2': data2}));
 }
 
 export default handler;
