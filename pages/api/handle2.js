@@ -90,7 +90,7 @@ const handler = async (req, res) => {
     });
 
   const statusCode2 = response2.status;
-  const data2 = await response2.json();
+  const data2 = await response2.text();
   
   return res.end(JSON.stringify({'data2': data2}));
 }
