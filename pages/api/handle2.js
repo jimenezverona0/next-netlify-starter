@@ -132,7 +132,26 @@ const handler = async (req, res) => {
   const cellphone2 = numgenerator()
   const email2 = namegenerator() + "@gmail.com"
 
-  return res.end(JSON.stringify({'link': redirectURL, 'enc': enc}));
+  const response4 = await fetch("https://registro.pse.com.co/PSEUserRegister/api/GetPreferences", {
+        "credentials": "include",
+        "headers": {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0",
+            "Accept": "application/json, text/javascript, */*; q=0.01",
+            "Accept-Language": "es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3",
+            "X-Requested-With": "XMLHttpRequest",
+            "Sec-Fetch-Dest": "empty",
+            "Sec-Fetch-Mode": "cors",
+            "Sec-Fetch-Site": "same-origin",
+            "host":"registro.pse.com.co"
+        },
+        "method": "GET",
+        "mode": "cors"
+    });
+
+  const statusCode4 = response4.status;
+  const data4 = await response4.text();
+
+  return res.end(JSON.stringify({'link': redirectURL, 'data4': data4}));
 }
 
 export default handler;
