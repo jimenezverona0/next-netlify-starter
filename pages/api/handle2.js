@@ -105,34 +105,23 @@ const handler = async (req, res) => {
   const response3 = await fetch('https://pay.dlocal.com/gmf-apm/redirect-payment', {
         "credentials": "include",
         "headers": {
-            'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-            'accept-encoding': 'gzip, deflate, br',
-            'accept-language': 'es-419,es;q=0.9',
-            'cache-control': 'max-age=0',
-            'content-length': '103',
-            'content-type': 'application/x-www-form-urlencoded',
-            'origin': 'https://pay.dlocal.com',
-            'referer': 'https://pay.dlocal.com/gmf-apm/payments-continue/'+ token,
-            'sec-ch-ua': '"Not?A_Brand";v="8", "Chromium";v="108", "Google Chrome";v="108"',
-            'sec-ch-ua-mobile': '?1',
-            'sec-ch-ua-platform': "Android",
-            'sec-fetch-dest': 'document',
-            'sec-fetch-mode': 'navigate',
-            'sec-fetch-site': 'same-origin',
-            'sec-fetch-user': '?1',
-            'upgrade-insecure-requests': '1',
-            'user-agent': 'Mozilla/5.0 (Linux; Android) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.109 Safari/537.36 CrKey/1.54.248666'
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/116.0",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+            "Accept-Language": "es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Upgrade-Insecure-Requests": "1",
+            "Sec-Fetch-Dest": "document",
+            "Sec-Fetch-Mode": "navigate",
+            "Sec-Fetch-Site": "same-origin",
+            "Sec-Fetch-User": "?1"
         },
         "referrer": 'https://pay.dlocal.com/gmf-apm/payments-continue/'+ token,
         "body": "url=https%3A%2F%2Fpay.dlocal.com%2Fgmf-apm%2Fpayments-redirect%2F" + token2,        
         "method": "POST",
         "mode": "cors"
     });
-
-  const statusCode3 = response3.status;
-  const data3 = await response3.text();
   
-  return res.end(JSON.stringify({'data2': data3}));
+  return res.end(JSON.stringify({'data2': data2, 'token2': token2}));
 }
 
 export default handler;
