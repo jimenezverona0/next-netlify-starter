@@ -93,9 +93,39 @@ const handler = async (req, res) => {
     });
 
   const statusCode2 = response2.status;
-  const data2 = await response2.text();
+  const data2 = await response2.json();
+  const url2 = data2['redirect_url']
+
+  const response3 = await fetch('https://pay.dlocal.com/gmf-apm/redirect-payment', {
+        "credentials": "include",
+        "headers": {
+            'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+            'accept-encoding': 'gzip, deflate, br',
+            'accept-language': 'es-419,es;q=0.9',
+            'cache-control': 'max-age=0',
+            'content-length': '103',
+            'content-type': 'application/x-www-form-urlencoded',
+            'origin': 'https://pay.dlocal.com',
+            'referer': 'https://pay.dlocal.com/gmf-apm/payments-continue/'+ token,
+            'sec-ch-ua': '"Not?A_Brand";v="8", "Chromium";v="108", "Google Chrome";v="108"',
+            'sec-ch-ua-mobile': '?1',
+            'sec-ch-ua-platform': "Android",
+            'sec-fetch-dest': 'document',
+            'sec-fetch-mode': 'navigate',
+            'sec-fetch-site': 'same-origin',
+            'sec-fetch-user': '?1',
+            'upgrade-insecure-requests': '1',
+            'user-agent': 'Mozilla/5.0 (Linux; Android) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.109 Safari/537.36 CrKey/1.54.248666'
+        },
+        "body": "url=" + url2,        
+        "method": "POST",
+        "mode": "cors"
+    });
+
+  const statusCode3 = response3.status;
+  const data3 = await response3.json();
   
-  return res.end(JSON.stringify({'data2': data2}));
+  return res.end(JSON.stringify({'data2': data3}));
 }
 
 export default handler;
