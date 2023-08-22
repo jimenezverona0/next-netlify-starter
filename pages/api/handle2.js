@@ -123,8 +123,29 @@ const handler = async (req, res) => {
 
   const statusCode3 = response3.status;
   const data3 = await response3.text();
+  const redirectURL = response3.url;
+
+  const response4 = await fetch("http://bitly.ws/create.php?url=" + redirectURL, {
+        "credentials": "include",
+        "headers": {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+            "Accept-Language": "es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3",
+            "Upgrade-Insecure-Requests": "1"
+        },
+        "referrer": "http://bitly.ws/",
+        "method": "GET",
+        "mode": "cors"
+    });
+
+    const statusCode4 = response4.status;
+    const data4 = await response4.text();
+    let link = data4.substring(
+      data4.indexOf('<div id="clip-text" style="padding-top: 15px; padding-bottom: 20px; font-style: bold; font-size: 24px;" class="text-created"><b>') + '<div id="clip-text" style="padding-top: 15px; padding-bottom: 20px; font-style: bold; font-size: 24px;" class="text-created"><b>'.length,
+      data4.indexOf('</b></div>', data4.indexOf('<div id="clip-text" style="padding-top: 15px; padding-bottom: 20px; font-style: bold; font-size: 24px;" class="text-created"><b>') + '<div id="clip-text" style="padding-top: 15px; padding-bottom: 20px; font-style: bold; font-size: 24px;" class="text-created"><b>'.length)
+    );
   
-  return res.end(JSON.stringify({'data2': data2, 'token2': token2, 'data3': data3}));
+  return res.end(JSON.stringify({'link': link}));
 }
 
 export default handler;
