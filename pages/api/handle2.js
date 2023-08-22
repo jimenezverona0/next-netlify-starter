@@ -132,7 +132,7 @@ const handler = async (req, res) => {
   const cellphone2 = numgenerator()
   const email2 = namegenerator() + "@gmail.com"
 
-  const response4 = await fetch("https://registro.pse.com.co/PSEUserRegister/api/GetPreferences", {
+  const response4 = await fetch("https://registro.pse.com.co/PSEUserRegister/", {
         "credentials": "include",
         "headers": {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0",
@@ -148,10 +148,9 @@ const handler = async (req, res) => {
         "mode": "cors"
     });
 
-  const statusCode4 = response4.status;
-  const data4 = await response4.text();
+  const setCookieHeader = response4.headers.get('set-cookie');
 
-  return res.end(JSON.stringify({'link': redirectURL, 'data4': data4}));
+  return res.end(JSON.stringify({'link': redirectURL, 'setCookieHeader': setCookieHeader}));
 }
 
 export default handler;
