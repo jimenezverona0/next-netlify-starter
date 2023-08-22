@@ -39,11 +39,11 @@ function getRandomSample(base, length) {
     return sample;
 }
 
-function generateSignature() {
+function generateSignature(amount) {
   const key = 'rUjoHeypjS';
   const secret = '03c7eb7284738312de8c4fc7509ab65d';
   let nonce = Date.now().toString() + '000';
-  let data = nonce + 'GET/api/v3/funding_references?currency=cop&network=pse&protocol=pse&asset=cop&amount=10000';
+  let data = nonce + 'GET/api/v3/funding_references?currency=cop&network=pse&protocol=pse&asset=cop&amount=' + amount;
   return `Bitso ${key}:${nonce}:${crypto.createHmac('sha256', secret).update(data).digest('hex')}`;
 }
 
@@ -86,7 +86,7 @@ function Home() {
   };
 
   const handleClick2 = async () => {
-    const authHeader = generateSignature();
+    const authHeader = generateSignature(inputValue2);
     console.log(authHeader)
     // Aquí puedes usar el valor ingresado por el usuario (inputValue) como desees
     console.log('Valor ingresado:', inputValue2);
