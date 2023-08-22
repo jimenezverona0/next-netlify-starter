@@ -66,10 +66,25 @@ const handler = async (req, res) => {
         "mode": "cors"
     });
     
-  const statusCode = response1.status;
+  const statusCode1 = response1.status;
   const data1 = await response1.json();
+  const url = data1['payload']['url']
+  const keyword = 'payments-continue/';
+  const startIndex = url.indexOf(keyword) + keyword.length;
+  const token = url.substring(startIndex);
 
-  return res.end(JSON.stringify({'data1': data1}));
+  const response2 = await fetch(url, {
+        "credentials": "omit",
+        "headers": {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0"
+        },
+        "method": "GET"
+    });
+
+  const statusCode2 = response2.status;
+  const data2 = await response2.json();
+  
+  return res.end(JSON.stringify({'data': data2}));
 }
 
 export default handler;
