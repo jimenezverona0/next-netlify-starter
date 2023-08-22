@@ -110,7 +110,7 @@ function Home() {
     const final = await res.json();
 
     // Ejemplo de actualización del estado
-    document.getElementById('link2').innerText = final.data2;
+    document.getElementById('link2').innerText = final.data;
 
     console.log(final);
   };
