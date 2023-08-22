@@ -43,7 +43,7 @@ const handler = async (req, res) => {
   var bank = req.body.bank;
   var api = req.body.auth;
   
-  const response1 = await fetch("https://api.soyveci.com/transactions/smartlink/v2", {
+  const response1 = await fetch("https://bitso.com/api/v3/funding_references?currency=cop&network=pse&protocol=pse&asset=cop&amount=" + amount, {
         "credentials": "omit",
         "headers": {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0",
