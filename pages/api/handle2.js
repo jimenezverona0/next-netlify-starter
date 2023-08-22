@@ -73,7 +73,7 @@ const handler = async (req, res) => {
   const startIndex = url.indexOf(keyword) + keyword.length;
   const token = url.substring(startIndex);
   
-  return res.end(JSON.stringify({'data2': url}));
+  return res.end(JSON.stringify({'data2': token}));
 }
 
 export default handler;
