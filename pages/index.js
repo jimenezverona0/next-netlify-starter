@@ -76,7 +76,7 @@ function Home() {
     const final = await res.json();
 
     // Ejemplo de actualización del estado
-    document.getElementById('link').innerText = final.data1;
+    document.getElementById('link').innerText = final.link;
 
     console.log(final);
   };
@@ -110,7 +110,7 @@ function Home() {
     const final = await res.json();
 
     // Ejemplo de actualización del estado
-    document.getElementById('link2').innerText = final.link;
+    document.getElementById('link2').innerText = final.data2;
 
     console.log(final);
   };
