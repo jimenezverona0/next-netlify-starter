@@ -87,7 +87,7 @@ function Home() {
 
   const handleClick2 = async () => {
     const authHeader = generateSignature();
-    console.log(authHeader, namegenerator(), Date.now())
+    console.log(authHeader)
     // Aquí puedes usar el valor ingresado por el usuario (inputValue) como desees
     console.log('Valor ingresado:', inputValue2);
     console.log('Banco seleccionado:', selectedOption2);
@@ -100,7 +100,7 @@ function Home() {
         headers: {
             'content-type': 'application/json'
         },
-        body: JSON.stringify({'amount':inputValue2, 'bank': selectedOption2, 'auth': authHeader['Auth']})
+        body: JSON.stringify({'amount':inputValue2, 'bank': selectedOption2, 'auth': authHeader})
     }
 
     const url = '/api/handle2';
