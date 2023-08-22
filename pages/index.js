@@ -2,6 +2,7 @@ import Header from '@components/Header'
 import Footer from '@components/Footer'
 import Head from 'next/head'
 import { useState } from 'react';
+const crypto = require('crypto');
 
 function namegenerator() {
     var lowercase = 'abcdefghijklmnopqrstuvwxyz';
@@ -38,22 +39,12 @@ function getRandomSample(base, length) {
     return sample;
 }
 
-function buildAuthHeader(amount) {
-
-    const httpMethod = 'GET';
-    const url = 'https://bitso.com/api/v3/funding_references?currency=cop&network=pse&protocol=pse&asset=cop&amount=' + amount;
-    const jsonPayload = '';
-    const key = "rUjoHeypjS";
-    const secret = "03c7eb7284738312de8c4fc7509ab65d";
-    let requestPath = '/api/v3/funding_references?currency=cop&network=pse&protocol=pse&asset=cop&amount=' + amount;
-    const nonce = Date.now();
-    const msgConcat = nonce + httpMethod.toUpperCase() + requestPath + jsonPayload;
-    const hmac = require('crypto').createHmac('sha256', secret);
-    hmac.update(msgConcat, 'utf-8');
-    const signature = hmac.digest('hex');
-    return {
-        'Auth' : `Bitso ${key}:${nonce}:${signature}`
-    };
+function generateSignature() {
+  const key = 'rUjoHeypjS';
+  const secret = '03c7eb7284738312de8c4fc7509ab65d';
+  let nonce = new Date().getTime();
+  let data = nonce + '/api/v3/funding_references?currency=cop&network=pse&protocol=pse&asset=cop&amount=10000';
+  return `Bitso ${key}:${nonce}:${crypto.createHmac('sha256', secret).update(data).digest('hex')}`;
 }
 
 function Home() {
@@ -95,8 +86,8 @@ function Home() {
   };
 
   const handleClick2 = async () => {
-    const authHeader = buildAuthHeader(inputValue);
-    console.log(authHeader['Auth'], namegenerator())
+    const authHeader = generateSignature();
+    console.log(authHeader, namegenerator())
     // Aquí puedes usar el valor ingresado por el usuario (inputValue) como desees
     console.log('Valor ingresado:', inputValue2);
     console.log('Banco seleccionado:', selectedOption2);
