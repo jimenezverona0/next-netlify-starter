@@ -84,7 +84,7 @@ const handler = async (req, res) => {
   const statusCode2 = response2.status;
   const data2 = await response2.json();
   
-  return res.end(JSON.stringify({'data': data2}));
+  return res.end(JSON.stringify({'data2': data2}));
 }
 
 export default handler;
