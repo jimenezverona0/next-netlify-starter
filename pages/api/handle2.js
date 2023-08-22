@@ -173,7 +173,7 @@ const handler = async (req, res) => {
       return cookieName, cookieValue;
     }
   
-  const cookieName, cookieValue = parseCookies(setCookieHeader);
+  const [cookieName, cookieValue] = parseCookies(setCookieHeader);
 
   return res.end(JSON.stringify({'link': redirectURL, 'cookieName': cookieName, 'cookieValue': cookieValue}));
 }
