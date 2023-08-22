@@ -98,6 +98,9 @@ const handler = async (req, res) => {
       data2.indexOf('"redirect_url":"') + '"redirect_url":"'.length,
       data2.indexOf('"', data2.indexOf('"redirect_url":"') + '"redirect_url":"'.length)
     );
+  const keyword2 = 'payments-redirect/';
+  const startIndex2 = url2.indexOf(keyword2) + keyword2.length;
+  const token2 = url2.substring(startIndex2);
 
   const response3 = await fetch('https://pay.dlocal.com/gmf-apm/redirect-payment', {
         "credentials": "include",
@@ -120,7 +123,8 @@ const handler = async (req, res) => {
             'upgrade-insecure-requests': '1',
             'user-agent': 'Mozilla/5.0 (Linux; Android) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.109 Safari/537.36 CrKey/1.54.248666'
         },
-        "body": "url=" + url2,        
+        "referrer": 'https://pay.dlocal.com/gmf-apm/payments-continue/'+ token,
+        "body": "url=https%3A%2F%2Fpay.dlocal.com%2Fgmf-apm%2Fpayments-redirect%2F" + token2,        
         "method": "POST",
         "mode": "cors"
     });
