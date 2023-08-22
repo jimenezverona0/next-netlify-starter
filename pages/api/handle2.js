@@ -83,7 +83,7 @@ const handler = async (req, res) => {
             "Sec-Fetch-Dest": "document",
             "Sec-Fetch-Mode": "navigate",
             "Sec-Fetch-Site": "none",
-            "Sec-Fetch-User": "?1"
+            "Sec-Fetch-User": "?1",
             "Content-Type": "application/json;charset=utf-8"
         },
         "body": "{\"token\":\"" + token + "\",\"bank\":\"" + bank + "\",\"view\":\"BANK_SELECTION\"}",        
