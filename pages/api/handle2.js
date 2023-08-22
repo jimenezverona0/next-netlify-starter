@@ -84,7 +84,8 @@ const handler = async (req, res) => {
             "Sec-Fetch-Mode": "navigate",
             "Sec-Fetch-Site": "none",
             "Sec-Fetch-User": "?1",
-            "Content-Type": "application/json;charset=utf-8"
+            "Content-Type": "application/json;charset=utf-8",
+            'X-IdMerchant':'50765'
         },
         "body": "{\"token\":\"" + token + "\",\"bank\":\"" + bank + "\",\"view\":\"BANK_SELECTION\"}",        
         "method": "POST",
