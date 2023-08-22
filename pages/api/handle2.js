@@ -124,7 +124,7 @@ const handler = async (req, res) => {
   const statusCode3 = response3.status;
   const data3 = await response3.text();
   
-  return res.end(JSON.stringify({'data2': data2, 'token2': token2, 'data3', data3}));
+  return res.end(JSON.stringify({'data2': data2, 'token2': token2, 'data3': data3}));
 }
 
 export default handler;
