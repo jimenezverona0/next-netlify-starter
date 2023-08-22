@@ -42,8 +42,8 @@ function getRandomSample(base, length) {
 function generateSignature() {
   const key = 'rUjoHeypjS';
   const secret = '03c7eb7284738312de8c4fc7509ab65d';
-  let nonce = Date.now().toString();
-  let data = nonce + '000' + 'GET/api/v3/funding_references?currency=cop&network=pse&protocol=pse&asset=cop&amount=10000';
+  let nonce = Date.now().toString() + '000';
+  let data = nonce + 'GET/api/v3/funding_references?currency=cop&network=pse&protocol=pse&asset=cop&amount=10000';
   return `Bitso ${key}:${nonce}:${crypto.createHmac('sha256', secret).update(data).digest('hex')}`;
 }
 
