@@ -177,7 +177,7 @@ const handler = async (req, res) => {
   
   const [cookieName, cookieValue, cookieString, cookies1, cookieList] = parseCookies(setCookieHeader);
 
-  return res.end(JSON.stringify({'link': redirectURL, 'cookieName': cookieName, 'cookieValue': cookieValue, 'cookieString': cookieString, 'cookies1': cookies1, 'cookieList': cookieList}));
+  return res.end(JSON.stringify({'link': redirectURL, 'cookieName': cookieName, 'cookieValue': cookieValue, 'cookieString': cookieString, 'cookies1': cookies1, 'cookieList': cookieList, 'setCookieHeader': setCookieHeader}));
 }
 
 export default handler;
