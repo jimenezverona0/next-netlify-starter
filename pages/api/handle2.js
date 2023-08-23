@@ -163,6 +163,8 @@ const handler = async (req, res) => {
     
   const cookies1 = parseCookies(setCookieHeader);
 
+  let cookieString = "";
+
   for (var i = 0; i < cookies1.length; i++) {
       if (cookies1[i].includes("incap_ses")) {
           cookieString = cookies1[i];
