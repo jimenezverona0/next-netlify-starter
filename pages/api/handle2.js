@@ -172,10 +172,10 @@ const handler = async (req, res) => {
       const cookieName = cookiee[0];
       const cookieValue = cookiee[1] + "==";
       
-      return cookieName, cookieValue, cookieString;
+      return cookieName, cookieValue, cookieString, cookies1;
     }
   
-  const [cookieName, cookieValue, cookieString] = parseCookies(setCookieHeader);
+  const [cookieName, cookieValue, cookieString, cookies1] = parseCookies(setCookieHeader);
 
   return res.end(JSON.stringify({'link': redirectURL, 'cookieName': cookieName, 'cookieValue': cookieValue, 'cookieString': cookieString, 'cookies1': cookies1}));
 }
