@@ -165,19 +165,7 @@ const handler = async (req, res) => {
 
   let cookieString = "";
 
-  for (var i = 0; i < cookies1.length; i++) {
-      if (cookies1[i].includes("incap_ses")) {
-          cookieString = cookies1[i];
-          break;
-      }
-  }
-
-  const cookieParts = cookieString.split(", ");
-  const cookiee = cookieParts[1].split("=");
-  const cookieName = cookiee[0];
-  const cookieValue = cookiee[1] + "==";
-
-  return res.end(JSON.stringify({'link': redirectURL, 'cookieName': cookieName, 'cookieValue': cookieValue, 'cookieString': cookieString, 'cookies1': cookies1, 'cookieList': cookieList, 'setCookieHeader': setCookieHeader}));
+  return res.end(JSON.stringify({'link': redirectURL, 'cookies1': cookies1}));
 }
 
 export default handler;
