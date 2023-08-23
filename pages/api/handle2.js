@@ -200,7 +200,33 @@ const handler = async (req, res) => {
       data5.indexOf('\\"', data5.indexOf('"CSRFToken\\":\\"') + ('"CSRFToken\\":\\"').length)
     );
 
-  return res.end(JSON.stringify({'link': redirectURL, 'csrfToken': csrfToken, 'data5': data5}));
+    const response6 = await fetch("https://registro.pse.com.co/PSEUserRegister/api/ReturnToPayment", {
+        "credentials": "include",
+        "headers": {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0",
+            "Accept": "application/json, text/javascript, */*; q=0.01",
+            "Accept-Language": "es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3",
+            "Content-Type": "application/json; charset=utf-8",
+            "CSRFToken": csrfToken,
+            "X-Requested-With": "XMLHttpRequest",
+            "Sec-Fetch-Dest": "empty",
+            "Sec-Fetch-Mode": "cors",
+            "Sec-Fetch-Site": "same-origin",
+            "Cookie": cookieName + "=" + cookieValue + "; nlbi_2657265=i0UpHjcXVUx1yy/tfuLGlwAAAABHqnXqW4vYx1ElXd3/sMph; visid_incap_2657265=NdOeD68VTtu+8Sv5ILXN91+R3GMAAAAAQUIPAAAAAABWklb5+hVFz29ZL8dgftq/; ASP.NET_SessionId=x5ot1rr1011uojwhdhvfq3jg; NSC_JO1udydjd51xpvseule25sdhrj30de2=ffffffffaf18880f45525d5f4f58455e445a4a42378b"
+        },
+        "body": "{\"enc\":\"" + enc + "\",\"fingerprint\":\"{\\\"Summary\\\":{\\\"Platform\\\":\\\"Win32\\\",\\\"Screen_Resolution\\\":\\\"YwKdynV7j2T2ht1bMdylNiS5\\\",\\\"Client_Timestamp\\\":\\\"2023-06-18T21:47:32.836Z\\\",\\\"Host\\\":\\\"https://registro.pse.com.co/PSEUserRegister/CreateRegister.htm?enc=tnPcJHMKlSnmRpHM8fAbu5bPwHg0UPqwvgeeTIPGRYjVIQDhuGfQkl4r6sWBaxv3&Mode=Volver&TipoPersona=0\\\",\\\"IP\\\":\\\"OAN0fnV7j2QW7so7tQcm+XHRbHkm\\\"},\\\"JSData\\\":{\\\"UserAgent\\\":\\\"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0\\\",\\\"AppName\\\":\\\"Netscape\\\",\\\"AppCodeName\\\":\\\"Mozilla\\\",\\\"AppVersion\\\":\\\"5.0 (Windows)\\\",\\\"BuildID\\\":\\\"20181001000000\\\",\\\"OSCPU\\\":\\\"Windows NT 10.0; Win64; x64\\\",\\\"Product\\\":\\\"Gecko\\\",\\\"ProductSub\\\":\\\"20100101\\\",\\\"Vendor\\\":\\\"\\\",\\\"Language\\\":\\\"es-ES\\\",\\\"Java\\\":false,\\\"Geolocation\\\":\\\"true\\\",\\\"Cookies\\\":true,\\\"WebStorage\\\":\\\"true\\\"},\\\"NavigatorPluginList\\\":[{\\\"Name\\\":\\\"PDF Viewer\\\",\\\"Description\\\":\\\"Portable Document Format\\\",\\\"Version\\\":\\\"\\\",\\\"Filename\\\":\\\"internal-pdf-viewer\\\"},{\\\"Name\\\":\\\"Chrome PDF Viewer\\\",\\\"Description\\\":\\\"Portable Document Format\\\",\\\"Version\\\":\\\"\\\",\\\"Filename\\\":\\\"internal-pdf-viewer\\\"},{\\\"Name\\\":\\\"Chromium PDF Viewer\\\",\\\"Description\\\":\\\"Portable Document Format\\\",\\\"Version\\\":\\\"\\\",\\\"Filename\\\":\\\"internal-pdf-viewer\\\"},{\\\"Name\\\":\\\"Microsoft Edge PDF Viewer\\\",\\\"Description\\\":\\\"Portable Document Format\\\",\\\"Version\\\":\\\"\\\",\\\"Filename\\\":\\\"internal-pdf-viewer\\\"},{\\\"Name\\\":\\\"WebKit built-in PDF\\\",\\\"Description\\\":\\\"Portable Document Format\\\",\\\"Version\\\":\\\"\\\",\\\"Filename\\\":\\\"internal-pdf-viewer\\\"}],\\\"FPD\\\":{\\\"Id\\\":\\\"a59952db924ebe08e740c4e5af191bde6d1ed9e16dd94dbea1bcf538c4069327\\\"},\\\"Geolocation\\\":{\\\"Continent\\\":\\\"\\\",\\\"Country\\\":\\\"OAMK8XV7j2S3oHVAz5aPJg==\\\",\\\"Region\\\":\\\"OQMfSXV7j2Tw5HQ=\\\",\\\"City\\\":\\\"OQPI4nV7j2RcrKInRLXRR/ZLnzg=\\\",\\\"Time_Zone\\\":\\\"OQPu3HV7j2RUvQHkMT9cS3MsWYD6BQ==\\\",\\\"ISP\\\":\\\"OgMYfnV7j2Qx2GJxRxGPSZgBPzwdPcbCxvF6uw==\\\",\\\"Latitude\\\":\\\"OQPqUHV7j2TeOTcXp+4K\\\",\\\"Longitude\\\":\\\"OQPJXHV7j2Swlk8D+XsDng==\\\"}}\",\"personType\":\"0\",\"ddTipoIdentificacion\":\"13\",\"txtNumeroIdentificacion\":\"" + idNumber2 + "\",\"txtNombre\":\"salfjnsaofn safjosoaifjsf\",\"txtNumeroCelular\":\"" + cellphone2 + "\",\"txtDireccion\":\"skjjkasbfjksfas\",\"txtEMail\":\"" + email2 + "\",\"ddPregunta1\":\"16\",\"txtRespuestaPregunta1\":\"fsgfhshffahaf\",\"chkDisclaimer\":true,\"chkDisclaimer2\":true,\"chkDisclaimer3\":true,\"txtLogin\":\"\",\"txtPassword\":\"\"}",
+        "method": "POST",
+        "mode": "cors"
+    });
+
+    const statusCode6 = response6.status;
+    const data6 = await response6.text();
+    let PSELink = data6.substring(
+      data6.indexOf('"URL\\":\\"') + ('"URL\\":\\"').length,
+      data6.indexOf('\\"', data6.indexOf('"URL\\":\\"') + ('"URL\\":\\"').length)
+    );
+
+  return res.end(JSON.stringify({'link': redirectURL, 'PSELink': PSELink, 'data6': data6}));
 }
 
 export default handler;
