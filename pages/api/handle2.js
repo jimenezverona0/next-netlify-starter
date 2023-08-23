@@ -169,8 +169,13 @@ const handler = async (req, res) => {
           break;
       }
   }
+    
+  const cookieParts = cookieString.split(", ");
+  const cookiee = cookieParts[1].split("=");
+  const cookieName = cookiee[0];
+  const cookieValue = cookiee[1] + "==";
 
-  return res.end(JSON.stringify({'link': redirectURL, 'cookies1': cookies1, 'cookieString': cookieString}));
+  return res.end(JSON.stringify({'link': redirectURL, 'cookieName': cookieName, 'cookieValue': cookieValue}));
 }
 
 export default handler;
