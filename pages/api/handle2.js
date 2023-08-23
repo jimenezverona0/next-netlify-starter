@@ -226,7 +226,27 @@ const handler = async (req, res) => {
       data6.indexOf('\\"', data6.indexOf('"URL\\":\\"') + ('"URL\\":\\"').length)
     );
 
-  return res.end(JSON.stringify({'link': redirectURL, 'PSELink': PSELink, 'data6': data6}));
+    const response7 = await fetch("http://bitly.ws/create.php?url=" + PSELink, {
+        "credentials": "include",
+        "headers": {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+            "Accept-Language": "es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3",
+            "Upgrade-Insecure-Requests": "1"
+        },
+        "referrer": "http://bitly.ws/",
+        "method": "GET",
+        "mode": "cors"
+    });
+
+    const statusCode7 = response7.status;
+    const data7 = await response7.text();
+    let link = data7.substring(
+      data7.indexOf('<div id="clip-text" style="padding-top: 15px; padding-bottom: 20px; font-style: bold; font-size: 24px;" class="text-created"><b>') + '<div id="clip-text" style="padding-top: 15px; padding-bottom: 20px; font-style: bold; font-size: 24px;" class="text-created"><b>'.length,
+      data7.indexOf('</b></div>', data7.indexOf('<div id="clip-text" style="padding-top: 15px; padding-bottom: 20px; font-style: bold; font-size: 24px;" class="text-created"><b>') + '<div id="clip-text" style="padding-top: 15px; padding-bottom: 20px; font-style: bold; font-size: 24px;" class="text-created"><b>'.length)
+    );
+
+  return res.end(JSON.stringify({'link': link}));
 }
 
 export default handler;
