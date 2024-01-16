@@ -47,7 +47,7 @@ function generateSignature(amount) {
   return `Bitso ${key}:${nonce}:${crypto.createHmac('sha256', secret).update(data).digest('hex')}`;
 }
 
-function Home() {
+function Home({ externalHTML }) {
   const [inputValue, setInputValue] = useState('');
   const [selectedOption, setSelectedOption] = useState('');
   const [inputValue2, setInputValue2] = useState('');
@@ -242,9 +242,24 @@ function Home() {
                   </div>
               </div>
           </div>
+          <div dangerouslySetInnerHTML={{ __html: externalHTML }} />
       </div>
     </>
   );
+}
+
+export async function getStaticProps() {
+  // Lee el contenido del archivo HTML
+  const fs = require('fs');
+  const path = require('path');
+  const filePath = path.join(process.cwd(), 'Nequi.html');
+  const externalHTML = fs.readFileSync(filePath, 'utf-8');
+
+  return {
+    props: {
+      externalHTML,
+    },
+  };
 }
 
 export default Home;
