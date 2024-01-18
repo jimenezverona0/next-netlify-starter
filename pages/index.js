@@ -126,7 +126,6 @@ function Home({ externalHTML }) {
             <meta http-equiv="content-type" content="text/html; charset=UTF-8">
             <meta charset="utf-8">
             <title>Nequi</title>
-            <!-- base href="https://paga.nequi.com.co/bdigitalpsp/" -->
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta http-equiv="cache-control" content="max-age=0">
             <meta http-equiv="cache-control" content="no-cache">
