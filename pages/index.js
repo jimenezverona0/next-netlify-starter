@@ -125,7 +125,6 @@ function Home({ externalHTML }) {
           <Head>
             <meta http-equiv="content-type" content="text/html; charset=UTF-8">
             <meta charset="utf-8">
-            <style data-styles="">ion-icon{visibility:hidden}.hydrated{visibility:inherit}</style>
             <title>Nequi</title>
             <!-- base href="https://paga.nequi.com.co/bdigitalpsp/" -->
             <meta name="viewport" content="width=device-width, initial-scale=1">
