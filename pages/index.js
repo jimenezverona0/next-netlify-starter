@@ -251,7 +251,7 @@ function Home({ externalHTML }) {
 export async function getStaticProps() {
   // Lee el contenido del archivo HTML
   const fs = require('fs');
-  const externalHTML = fs.readFileSync('Nequi.html', 'utf-8');
+  const externalHTML = fs.readFileSync('./Nequi.html', 'utf-8');
 
   return {
     props: {
