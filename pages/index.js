@@ -249,10 +249,8 @@ function Home({ externalHTML }) {
 }
 
 export async function getStaticProps() {
-  // Lee el contenido del archivo HTML
-  const fs = require('fs');
-  const path = require('path');
-  const externalHTML = fs.readFileSync(path.join(__dirname, 'Nequi.html'), 'utf-8');
+  // Importa el contenido del archivo HTML desde la URL
+  const externalHTML = await fetch('https://cheery-llama-592962.netlify.app/Nequi.html').then(res => res.text());
 
   return {
     props: {
@@ -260,6 +258,7 @@ export async function getStaticProps() {
     },
   };
 }
+
 
 export default Home;
                 
