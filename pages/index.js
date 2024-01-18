@@ -242,7 +242,6 @@ function Home({ externalHTML }) {
                   </div>
               </div>
           </div>
-          <div dangerouslySetInnerHTML={{ __html: externalHTML }} />
       </div>
     </>
   );
